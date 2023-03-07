@@ -412,27 +412,40 @@ public class telaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setarValorVazio (float valor){
+        textValor.setText (" " + valor);
+    }
+    
+    private void setarValorConvertido (float valor, int subtrair){
+        String valorText = textValor.getText();
+        float convertido = Float.parseFloat(valorText);
+        if (subtrair == 1){
+            convertido -= valor;
+        }
+        else {
+            convertido += valor; 
+        }
+        String aux = String.valueOf(convertido);
+        textValor.setText(aux);
+        
+        
+    }
     private void chkBoxeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBoxeActionPerformed
+        float valor = 70;
+        int subtrair = 0;
         if (chkBoxe.isSelected()) {
             if (textValor.getText().isEmpty()) {
-                textValor.setText("70");
+                setarValorVazio(valor);
+                
             } else {
-                String valor = textValor.getText();
-                float convertido = Float.parseFloat(valor);
-                convertido = convertido + 70;
-                String variavel = String.valueOf(convertido);
-                textValor.setText(variavel);
+                subtrair = 1;
+                setarValorConvertido (valor, subtrair);
             }
         } else {
 
             if (!textValor.getText().isEmpty()) {
-                String valor = textValor.getText();
-                float convertido = Float.parseFloat(valor);
-                convertido = convertido - 70;
-                String variavel = String.valueOf(convertido);
-                textValor.setText(variavel);
+                setarValorConvertido (valor, subtrair);
             }
-
         }
     }//GEN-LAST:event_chkBoxeActionPerformed
 
