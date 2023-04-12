@@ -7,7 +7,6 @@ package Janelas;
 
 import Controladora.Interface_Grafica;
 
-
 /**
  *
  * @author luiz.marchiori
@@ -15,19 +14,12 @@ import Controladora.Interface_Grafica;
 public class janelaPadrao extends javax.swing.JFrame {
 
     private Interface_Grafica gerIG;
-    
+
     public janelaPadrao(Interface_Grafica gerIG) {
         this.gerIG = gerIG;
         initComponents();
-        lblBairro.setVisible(false);
-        txtBairro.setVisible(false);
-        lblNumero.setVisible(false);
-        txtNumero.setVisible(false);
-        lblRua.setVisible(false);
-        txtRua.setVisible(false);
-        lblTelefone.setVisible(false);
-        txtTelefone.setVisible(false);
-        botAdicionarCliente.setVisible(false);
+        esconderBotoes();
+
     }
 
     /**
@@ -145,7 +137,7 @@ public class janelaPadrao extends javax.swing.JFrame {
 
         botAdicionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/verifica.png"))); // NOI18N
 
-        botLimpar.setText("Limpar");
+        botLimpar.setText("Cancelar");
         botLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botLimparActionPerformed(evt);
@@ -178,7 +170,7 @@ public class janelaPadrao extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(botPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(botLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botAdicionarCliente)))
                 .addContainerGap())
@@ -210,11 +202,11 @@ public class janelaPadrao extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelefone)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(botLimpar)
+                        .addComponent(botLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)))
                 .addContainerGap())
         );
@@ -539,11 +531,7 @@ public class janelaPadrao extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void radioCheddarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCheddarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioCheddarActionPerformed
-
-    private void botCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCriarActionPerformed
+    private void mostrarBotoes() {
         lblBairro.setVisible(true);
         txtBairro.setVisible(true);
         lblNumero.setVisible(true);
@@ -553,10 +541,34 @@ public class janelaPadrao extends javax.swing.JFrame {
         lblTelefone.setVisible(true);
         txtTelefone.setVisible(true);
         botAdicionarCliente.setVisible(true);
+        botLimpar.setVisible(true);
+
+    }
+
+    private void esconderBotoes() {
+        lblBairro.setVisible(false);
+        txtBairro.setVisible(false);
+        lblNumero.setVisible(false);
+        txtNumero.setVisible(false);
+        lblRua.setVisible(false);
+        txtRua.setVisible(false);
+        lblTelefone.setVisible(false);
+        txtTelefone.setVisible(false);
+        botAdicionarCliente.setVisible(false);
+        botLimpar.setVisible(false);
+
+    }
+    private void radioCheddarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCheddarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioCheddarActionPerformed
+
+    private void botCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCriarActionPerformed
+        mostrarBotoes();
+        botPesquisar.setVisible(false);
     }//GEN-LAST:event_botCriarActionPerformed
 
     private void botPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPesquisarActionPerformed
-        
+
     }//GEN-LAST:event_botPesquisarActionPerformed
 
     private void botAdicionarPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarPizzaActionPerformed
@@ -581,6 +593,8 @@ public class janelaPadrao extends javax.swing.JFrame {
         txtNumero.setText("");
         txtRua.setText("");
         txtTelefone.setText("");
+        esconderBotoes();
+        botPesquisar.setVisible(true);
     }//GEN-LAST:event_botLimparActionPerformed
 
 
