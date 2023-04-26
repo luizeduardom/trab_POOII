@@ -5,10 +5,8 @@
  */
 package DAO;
 
-/**
- *
- * @author luiz.marchiori
- */
+import java.awt.List;
+
 public class PizzaDAO {
     
 }
