@@ -6,30 +6,44 @@
 package Dominio;
 
 import java.util.List;
-
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 public class Pizza {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPizza;
+    
+    //relacionamentos
+    /* ? @OneToMany (mappedBy = "itensPedido", fetch = FetchType.LAZY)*/
+    @JoinColumn(name = "idItensPedido")
     private ItensPedido itensPedido;
-    private String nomePizza;
+    
+    /* ? @OneToMany (mappedBy = "ingrediente", fetch = FetchType.LAZY)*/
+    @JoinColumn(name = "idIngrediente")
     private List<Ingrediente> ingrediente;
+    
+    @Column(name = "nomePizza", nullable = false)
+    private String nomePizza;
+    
+    @Column(name = "valorPizza", nullable = false)
     private float valorPizza;
 
-    public ItensPedido getIdItensPedido() {
-        return itensPedido;
-    }
-
-    public void setIdItensPedido(ItensPedido itensPedido) {
-        this.itensPedido = itensPedido;
-    }
-
-    public Pizza(int idPizza, ItensPedido idItensPedido, String nomePizza, List<Ingrediente> ingrediente, float valorPizza) {
+    public Pizza(int idPizza, ItensPedido ItensPedido, String nomePizza, List<Ingrediente> ingrediente, float valorPizza) {
         this.idPizza = idPizza;
         this.nomePizza = nomePizza;
         this.ingrediente = ingrediente;
         this.valorPizza = valorPizza;
-        this.itensPedido = idItensPedido;
+        this.itensPedido = ItensPedido;
+    }
+
+    public ItensPedido getItensPedido() {
+        return itensPedido;
+    }
+
+    public void setItensPedido(ItensPedido itensPedido) {
+        this.itensPedido = itensPedido;
     }
 
     public int getIdPizza() {
@@ -63,7 +77,5 @@ public class Pizza {
     public void setValorPizza(float valorPizza) {
         this.valorPizza = valorPizza;
     }
-    
-    
-    
+
 }

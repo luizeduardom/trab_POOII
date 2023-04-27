@@ -5,27 +5,40 @@
  */
 package Dominio;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.*;
+
 /**
  *
  * @author 2021122760224
  */
 public class Ingrediente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idIngrediente;
+    
+    @Column(name = "nomeIngrediente", nullable = false)
     private String nomeIngrediente;
+    
+    //relacionamento
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "idPizza")
     private Pizza pizza;
+    //
 
-    public Ingrediente(int idIngrediente, String nomeIngrediente, Pizza idPizza) {
+    public Ingrediente(int idIngrediente, String nomeIngrediente, Pizza pizza) {
         this.idIngrediente = idIngrediente;
         this.nomeIngrediente = nomeIngrediente;
-        this.pizza = idPizza;
+        this.pizza = pizza;
     }
 
-    public Pizza getIdPizza() {
+    public Pizza getPizza() {
         return pizza;
     }
 
-    public void setIdPizza(Pizza idPizza) {
-        this.pizza = idPizza;
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
     }
 
     public int getIdIngrediente() {
@@ -43,6 +56,5 @@ public class Ingrediente {
     public void setNomeIngrediente(String nomeIngrediente) {
         this.nomeIngrediente = nomeIngrediente;
     }
-    
-    
+
 }

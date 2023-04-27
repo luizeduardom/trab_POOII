@@ -5,15 +5,28 @@
  */
 package Dominio;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.*;
+
 /**
  *
  * @author luiz.marchiori
  */
 public class Pedido {
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPedido;
+    
+    //relacionamento
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "idCliente")
     private Cliente cliente;
+    
+    @Column(name = "entrega", nullable = false)
     private boolean entrega;
+    
+    @Column(name = "valorTotal", nullable = false)
     private float valorTotal;
 
     public Pedido(int idPedido, Cliente cliente, boolean entrega, float valorTotal) {
@@ -31,11 +44,11 @@ public class Pedido {
         this.idPedido = idPedido;
     }
 
-    public Cliente getIdCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
+    public void setCliente(Cliente idCliente) {
         this.cliente = idCliente;
     }
 
@@ -54,9 +67,5 @@ public class Pedido {
     public void setValorTotal(float valorTotal) {
         this.valorTotal = valorTotal;
     }
-    
-    
-    
-    
-    
+
 }
