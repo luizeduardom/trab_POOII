@@ -1,8 +1,6 @@
 package Dominio;
 
 import java.util.List;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.*;
 
 /**
@@ -27,27 +25,32 @@ public class ItensPedido {
     @JoinColumn(name = "idPizza")
     private Pizza pizza;
     
+    @OneToMany (mappedBy = "itenspedido" , fetch = FetchType.LAZY)
+    private List<Adicional> adicional;
+    
     /*|-------------------| relacionamentos |-------------------|*/
     
     @Column(name = "quantidadePizza", nullable = false)
     private int qntd;
     
-    @Column(name = "adicionalPizza", nullable = false)
-    private List<String> adicional;
     
     /*|-------------------| construtor |-------------------|*/
 
-    public ItensPedido(int idItensPedido, Pedido pedido, Pizza pizza, int qntd, List<String> adicional) {
+    public ItensPedido(int idItensPedido, Pedido pedido, Pizza pizza, int qntd, Adicional adicional) {
         this.idItensPedido = idItensPedido;
         this.pedido = pedido;
         this.pizza = pizza;
         this.qntd = qntd;
-        this.adicional = adicional;
     }
     
      /*|-------------------| construtor |-------------------|*/
     
      /*|-------------------| getters & setters |-------------------|*/
+
+    public List<Adicional> getAdicional() {
+        return adicional;
+    }
+
 
     public Pedido getPedido() {
         return pedido;
@@ -79,14 +82,6 @@ public class ItensPedido {
 
     public void setQntd(int qntd) {
         this.qntd = qntd;
-    }
-
-    public List<String> getAdicional() {
-        return adicional;
-    }
-
-    public void setAdicional(List<String> adicional) {
-        this.adicional = adicional;
     }
     
     /*|-------------------| getters & setters |-------------------|*/

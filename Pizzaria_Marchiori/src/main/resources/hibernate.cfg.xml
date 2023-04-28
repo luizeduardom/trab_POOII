@@ -12,10 +12,10 @@
     <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
-    <mapping class="dominio.Cliente"></mapping>
-    <mapping class="dominio.Ingrediente"></mapping>
-    <mapping class="dominio.ItensPedido"></mapping>
-    <mapping class="dominio.Pedido"></mapping>
-    <mapping class="dominio.Pizza"></mapping>
+    <mapping class="Dominio.Cliente"></mapping>
+    <mapping class="Dominio.Ingrediente"></mapping>
+    <mapping class="Dominio.ItensPedido"></mapping>
+    <mapping class="Dominio.Pedido"></mapping>
+    <mapping class="Dominio.Pizza"></mapping>
   </session-factory>
 </hibernate-configuration>

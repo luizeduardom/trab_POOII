@@ -18,12 +18,10 @@ public class Pizza {
     
     /*|-------------------| relacionamentos |-------------------|*/
     
-    @OneToMany (mappedBy = "itensPedido", fetch = FetchType.LAZY)
-    @JoinColumn(name = "idItensPedido")
-    private ItensPedido itensPedido;
+    @OneToMany (mappedBy = "pizza", fetch = FetchType.LAZY)
+    private List<ItensPedido> itensPedido;
     
-    @OneToMany (mappedBy = "ingrediente", fetch = FetchType.LAZY)
-    @JoinColumn(name = "idIngrediente")
+    @OneToMany (mappedBy = "pizza", fetch = FetchType.LAZY)
     private List<Ingrediente> ingrediente;
     
     /*|-------------------| relacionamentos |-------------------|*/
@@ -36,25 +34,20 @@ public class Pizza {
 
     /*|-------------------| construtor |-------------------|*/
     
-    public Pizza(int idPizza, ItensPedido ItensPedido, String nomePizza, List<Ingrediente> ingrediente, float valorPizza) {
+    public Pizza(int idPizza, String nomePizza, float valorPizza) {
         this.idPizza = idPizza;
         this.nomePizza = nomePizza;
-        this.ingrediente = ingrediente;
         this.valorPizza = valorPizza;
-        this.itensPedido = ItensPedido;
     }
     
     /*|-------------------| construtor |-------------------|*/
 
     /*|-------------------| getters & setters |-------------------|*/
-    
-    public ItensPedido getItensPedido() {
+
+    public List<ItensPedido> getItensPedido() {
         return itensPedido;
     }
-
-    public void setItensPedido(ItensPedido itensPedido) {
-        this.itensPedido = itensPedido;
-    }
+    
 
     public int getIdPizza() {
         return idPizza;

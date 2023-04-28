@@ -1,5 +1,7 @@
 package Dominio;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
@@ -21,9 +23,8 @@ public class Pedido {
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
     
-    @OneToMany (mappedBy = "itensPedido", fetch = FetchType.LAZY)
-    @JoinColumn(name= "idItensPedido")
-    private ItensPedido itenspedido;
+    @OneToMany (mappedBy = "pedido", fetch = FetchType.LAZY)
+    private List<ItensPedido> itenspedido;
     
     /*|-------------------| relacionamentos |-------------------|*/
     
@@ -35,25 +36,21 @@ public class Pedido {
 
     /*|-------------------| construtor |-------------------|*/
     
-    public Pedido(int idPedido, Cliente cliente, boolean entrega, float valorTotal, ItensPedido itenspedido) {
+    public Pedido(int idPedido, Cliente cliente, boolean entrega, float valorTotal) {
         this.idPedido = idPedido;
         this.cliente = cliente;
         this.entrega = entrega;
         this.valorTotal = valorTotal;
-        this.itenspedido = itenspedido;
     }
     
     /*|-------------------| construtor |-------------------|*/
     
     /*|-------------------| getters & setters |-------------------|*/
 
-    public ItensPedido getItenspedido() {
+    public List<ItensPedido> getItenspedido() {
         return itenspedido;
     }
 
-    public void setItenspedido(ItensPedido itenspedido) {
-        this.itenspedido = itenspedido;
-    }
 
     public int getIdPedido() {
         return idPedido;

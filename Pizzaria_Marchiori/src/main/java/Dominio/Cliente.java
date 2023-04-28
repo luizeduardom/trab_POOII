@@ -32,8 +32,7 @@ public class Cliente {
 
     /*|-------------------| relacionamentos |-------------------|*/
     
-    @OneToMany (mappedBy = "pedido", fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPedido")
+    @OneToMany (mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<Pedido> pedido;
     
     /*|-------------------| relacionamentos |-------------------|*/
