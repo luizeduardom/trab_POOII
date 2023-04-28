@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controladora;
 
 import Janelas.janelaPizza;
 import Janelas.janelaPadrao;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -20,6 +16,7 @@ public class Interface_Grafica {
 
     private janelaPadrao janelaPrincipal = null;
     private janelaPizza janPizza = null;
+    private GerenciadorDominio gerDominio;
 
     /**
      * @param args the command line arguments
@@ -54,7 +51,12 @@ public class Interface_Grafica {
     }
 
     public Interface_Grafica() {
-
+        try {
+            gerDominio = new GerenciadorDominio();
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(janPizza, "Erro de conexão com o banco. " + ex.getMessage());
+            System.exit(-1);
+        }
     }
 
     public void abrirJanelaPrincipal() {
@@ -82,8 +84,8 @@ public class Interface_Grafica {
         janela.setVisible(false);
 
     }
-    
-    public void encerrarPrograma (java.awt.Frame parent){
+
+    public void encerrarPrograma(java.awt.Frame parent) {
         JOptionPane.showMessageDialog(parent, "Obrigado por usar nossos serviços!");
         System.exit(0);
     }

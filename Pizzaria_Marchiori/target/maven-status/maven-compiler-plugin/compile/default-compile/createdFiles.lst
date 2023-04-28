@@ -14,6 +14,7 @@ DAO\PizzaDAO.class
 Dominio\ItensPedido.class
 Janelas\janelaPadrao$2.class
 Dominio\Cliente.class
+Controladora\GerenciadorDominio.class
 DAO\PedidoDAO.class
 Janelas\janelaPadrao$3.class
 Dominio\Pizza.class
