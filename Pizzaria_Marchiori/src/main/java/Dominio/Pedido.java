@@ -13,15 +13,24 @@ import javax.persistence.*;
  *
  * @author luiz.marchiori
  */
+
+@Entity
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPedido;
     
-    //relacionamento
+    /*|-------------------| relacionamentos |-------------------|*/
+    
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
+    
+    @OneToMany (mappedBy = "itensPedido", fetch = FetchType.LAZY)
+    @JoinColumn(name= "idItensPedido")
+    private ItensPedido itenspedido;
+    
+    /*|-------------------| relacionamentos |-------------------|*/
     
     @Column(name = "entrega", nullable = false)
     private boolean entrega;
@@ -29,11 +38,26 @@ public class Pedido {
     @Column(name = "valorTotal", nullable = false)
     private float valorTotal;
 
-    public Pedido(int idPedido, Cliente cliente, boolean entrega, float valorTotal) {
+    /*|-------------------| construtor |-------------------|*/
+    
+    public Pedido(int idPedido, Cliente cliente, boolean entrega, float valorTotal, ItensPedido itenspedido) {
         this.idPedido = idPedido;
         this.cliente = cliente;
         this.entrega = entrega;
         this.valorTotal = valorTotal;
+        this.itenspedido = itenspedido;
+    }
+    
+    /*|-------------------| construtor |-------------------|*/
+    
+    /*|-------------------| getters & setters |-------------------|*/
+
+    public ItensPedido getItenspedido() {
+        return itenspedido;
+    }
+
+    public void setItenspedido(ItensPedido itenspedido) {
+        this.itenspedido = itenspedido;
     }
 
     public int getIdPedido() {
@@ -68,4 +92,5 @@ public class Pedido {
         this.valorTotal = valorTotal;
     }
 
+     /*|-------------------| getters & setters |-------------------|*/
 }

@@ -5,12 +5,13 @@ Janelas\janelaPadrao$6.class
 Janelas\janelaPadrao$4.class
 Janelas\janelaPadrao$9.class
 Janelas\janelaPizza$1.class
+DAO\ConexaoHibernate.class
 Janelas\janelaPadrao$7.class
-Janelas\janelaPadrao$10.class
 Janelas\janelaPizza$2.class
 Controladora\Interface_Grafica.class
 Janelas\janelaPizza.class
 DAO\PizzaDAO.class
+Dominio\ItensPedido.class
 Janelas\janelaPadrao$2.class
 Dominio\Cliente.class
 DAO\PedidoDAO.class
@@ -18,5 +19,5 @@ Janelas\janelaPadrao$3.class
 Dominio\Pizza.class
 Janelas\janelaPadrao$5.class
 Janelas\janelaPadrao$8.class
-DAO\ClienteDAO.class
+Dominio\Ingrediente.class
 Dominio\Pedido.class

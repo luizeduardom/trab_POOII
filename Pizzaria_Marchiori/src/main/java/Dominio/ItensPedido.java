@@ -6,27 +6,37 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
 
+/**
+ *
+ * @author luiz.marchiori
+ */
+
+@Entity
 public class ItensPedido {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idItensPedido;
     
-    //relacionamentos
+    /*|-------------------| relacionamentos |-------------------|*/
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPedido")
     private Pedido pedido;
     
-    /*? OneToMany // (fetch = FetchType.EAGER) */
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "idPizza")
     private Pizza pizza;
+    
+    /*|-------------------| relacionamentos |-------------------|*/
     
     @Column(name = "quantidadePizza", nullable = false)
     private int qntd;
     
     @Column(name = "adicionalPizza", nullable = false)
     private List<String> adicional;
+    
+    /*|-------------------| construtor |-------------------|*/
 
     public ItensPedido(int idItensPedido, Pedido pedido, Pizza pizza, int qntd, List<String> adicional) {
         this.idItensPedido = idItensPedido;
@@ -35,6 +45,10 @@ public class ItensPedido {
         this.qntd = qntd;
         this.adicional = adicional;
     }
+    
+     /*|-------------------| construtor |-------------------|*/
+    
+     /*|-------------------| getters & setters |-------------------|*/
 
     public Pedido getPedido() {
         return pedido;
@@ -76,5 +90,5 @@ public class ItensPedido {
         this.adicional = adicional;
     }
     
-    
+    /*|-------------------| getters & setters |-------------------|*/
 }

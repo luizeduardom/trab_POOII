@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dominio;
 
 import java.util.List;
@@ -12,6 +7,7 @@ import javax.persistence.*;
  *
  * @author luiz.marchiori
  */
+
 @Entity
 public class Cliente {
 
@@ -34,22 +30,29 @@ public class Cliente {
     @Column(name = "telefoneCliente", nullable = false)
     private long telefone;
 
-    //relacionamento
+    /*|-------------------| relacionamentos |-------------------|*/
+    
     @OneToMany (mappedBy = "pedido", fetch = FetchType.LAZY)
     @JoinColumn(name = "idPedido")
     private List<Pedido> pedido;
-    //
-
-    public Cliente(int idCliente, String nome, String bairro, String rua, int numero, long telefone, List<Pedido> pedido) {
+    
+    /*|-------------------| relacionamentos |-------------------|*/
+    
+    /*|-------------------| construtor |-------------------|*/
+    
+    public Cliente(int idCliente, String nome, String bairro, String rua, int numero, long telefone) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.bairro = bairro;
         this.rua = rua;
         this.numero = numero;
         this.telefone = telefone;
-        this.pedido = pedido;
     }
+    
+    /*|-------------------| construtor |-------------------|*/
 
+    /*|-------------------| getters & setters |-------------------|*/
+    
     public int getIdCliente() {
         return idCliente;
     }
@@ -105,4 +108,6 @@ public class Cliente {
     public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
+    
+    /*|-------------------| Getters & Setters |-------------------|*/
 }

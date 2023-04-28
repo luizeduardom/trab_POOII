@@ -10,19 +10,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
 
+/**
+ *
+ * @author luiz.marchiori
+ */
+
+@Entity
 public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPizza;
     
-    //relacionamentos
-    /* ? @OneToMany (mappedBy = "itensPedido", fetch = FetchType.LAZY)*/
+    /*|-------------------| relacionamentos |-------------------|*/
+    
+    @OneToMany (mappedBy = "itensPedido", fetch = FetchType.LAZY)
     @JoinColumn(name = "idItensPedido")
     private ItensPedido itensPedido;
     
-    /* ? @OneToMany (mappedBy = "ingrediente", fetch = FetchType.LAZY)*/
+    @OneToMany (mappedBy = "ingrediente", fetch = FetchType.LAZY)
     @JoinColumn(name = "idIngrediente")
     private List<Ingrediente> ingrediente;
+    
+    /*|-------------------| relacionamentos |-------------------|*/
     
     @Column(name = "nomePizza", nullable = false)
     private String nomePizza;
@@ -30,6 +39,8 @@ public class Pizza {
     @Column(name = "valorPizza", nullable = false)
     private float valorPizza;
 
+    /*|-------------------| construtor |-------------------|*/
+    
     public Pizza(int idPizza, ItensPedido ItensPedido, String nomePizza, List<Ingrediente> ingrediente, float valorPizza) {
         this.idPizza = idPizza;
         this.nomePizza = nomePizza;
@@ -37,7 +48,11 @@ public class Pizza {
         this.valorPizza = valorPizza;
         this.itensPedido = ItensPedido;
     }
+    
+    /*|-------------------| construtor |-------------------|*/
 
+    /*|-------------------| getters & setters |-------------------|*/
+    
     public ItensPedido getItensPedido() {
         return itensPedido;
     }
@@ -78,4 +93,5 @@ public class Pizza {
         this.valorPizza = valorPizza;
     }
 
+    /*|-------------------| getters & setters |-------------------|*/
 }
