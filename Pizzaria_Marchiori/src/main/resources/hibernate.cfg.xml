@@ -17,5 +17,6 @@
     <mapping class="Dominio.ItensPedido"></mapping>
     <mapping class="Dominio.Pedido"></mapping>
     <mapping class="Dominio.Pizza"></mapping>
+    <mapping class="Dominio.Adicional"></mapping>
   </session-factory>
 </hibernate-configuration>

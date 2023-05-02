@@ -2,6 +2,7 @@ package Dominio;
 
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -17,8 +18,13 @@ public class Adicional implements Serializable {
     private int idAdicional;
 
     /*|-------------------| relacionamentos |-------------------|*/
-    @OneToMany (mappedBy = "idAdicional" , fetch = FetchType.LAZY)
+    
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn (name = "idItensPedido")
     private ItensPedido itenspedido;
+ 
+    /*@OneToMany (mappedBy = "idAdicional" , fetch = FetchType.LAZY)
+    private ItensPedido itenspedido;*/
 
     /*|-------------------| relacionamentos |-------------------|*/
     
@@ -43,6 +49,12 @@ public class Adicional implements Serializable {
         return itenspedido;
     }
 
+    public void setItenspedido(ItensPedido itenspedido) {
+        this.itenspedido = itenspedido;
+    }
+
+    
+    
     public int getIdAdicional() {
         return idAdicional;
     }
