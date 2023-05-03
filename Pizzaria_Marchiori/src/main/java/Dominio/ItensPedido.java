@@ -27,7 +27,10 @@ public class ItensPedido implements Serializable {
     @JoinColumn(name = "idPizza")
     private Pizza pizza;
     
-    @OneToMany (mappedBy = "itenspedido" , fetch = FetchType.LAZY)
+    @ManyToMany 
+    @JoinTable (name = "ItensPedido_Adicional", 
+            joinColumns = @JoinColumn (name = "idItensPedido"), 
+            inverseJoinColumns = @JoinColumn (name = "idAdicional"))
     private List<Adicional> adicional = new ArrayList<>();
     /*@ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn (name = "idAdicional")

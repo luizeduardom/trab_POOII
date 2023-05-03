@@ -1,7 +1,7 @@
 package Dominio;
 
-
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -9,7 +9,6 @@ import javax.persistence.*;
  *
  * @author luiz.marchiori
  */
-
 @Entity
 public class Adicional implements Serializable {
 
@@ -18,16 +17,16 @@ public class Adicional implements Serializable {
     private int idAdicional;
 
     /*|-------------------| relacionamentos |-------------------|*/
-    
-    @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn (name = "idItensPedido")
-    private ItensPedido itenspedido;
- 
+    @ManyToMany
+    @JoinTable(name = "ItensPedido_Adicional",
+            joinColumns = @JoinColumn(name = "idAdicional"),
+            inverseJoinColumns = @JoinColumn(name = "idItensPedido"))
+    private List<ItensPedido> itenspedido = new ArrayList<>();
+
     /*@OneToMany (mappedBy = "idAdicional" , fetch = FetchType.LAZY)
     private ItensPedido itenspedido;*/
 
-    /*|-------------------| relacionamentos |-------------------|*/
-    
+ /*|-------------------| relacionamentos |-------------------|*/
     @Column(name = "nomeAdicional", nullable = false)
     private String nome;
 
@@ -42,19 +41,15 @@ public class Adicional implements Serializable {
     }
 
     /*|-------------------| construtor |-------------------|*/
-    
  /*|-------------------| getters & setters |-------------------|*/
-
-    public ItensPedido getItenspedido() {
+    public List<ItensPedido> getItenspedido() {
         return itenspedido;
     }
 
-    public void setItenspedido(ItensPedido itenspedido) {
+    public void setItenspedido(List<ItensPedido> itenspedido) {
         this.itenspedido = itenspedido;
     }
 
-    
-    
     public int getIdAdicional() {
         return idAdicional;
     }
@@ -78,6 +73,6 @@ public class Adicional implements Serializable {
     public void setPreco(float preco) {
         this.preco = preco;
     }
-    
-     /*|-------------------| getters & setters |-------------------|*/
+
+    /*|-------------------| getters & setters |-------------------|*/
 }

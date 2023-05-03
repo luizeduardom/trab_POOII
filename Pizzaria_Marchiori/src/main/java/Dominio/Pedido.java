@@ -30,14 +30,14 @@ public class Pedido implements Serializable {
     /*|-------------------| relacionamentos |-------------------|*/
     
     @Column(name = "entrega", nullable = false)
-    private boolean entrega;
+    private int entrega;
     
     @Column(name = "valorTotal", nullable = false)
     private float valorTotal;
 
     /*|-------------------| construtor |-------------------|*/
     
-    public Pedido(int idPedido, Cliente cliente, boolean entrega, float valorTotal) {
+    public Pedido(int idPedido, Cliente cliente, int entrega, float valorTotal) {
         this.idPedido = idPedido;
         this.cliente = cliente;
         this.entrega = entrega;
@@ -69,11 +69,11 @@ public class Pedido implements Serializable {
         this.cliente = idCliente;
     }
 
-    public boolean isEntrega() {
+    public int isEntrega() {
         return entrega;
     }
 
-    public void setEntrega(boolean entrega) {
+    public void setEntrega(int entrega) {
         this.entrega = entrega;
     }
 
