@@ -1,12 +1,17 @@
 package Controladora;
 
+import Dominio.Pizza;
 import Janelas.janelaPizza;
 import Janelas.janelaPadrao;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -90,4 +95,15 @@ public class Interface_Grafica {
         System.exit(0);
     }
 
+      public void carregarCombo(JComboBox combo, Class classe) {
+        
+        try {
+            List<Pizza> lista = gerDominio.listar(classe);
+            combo.setModel( new DefaultComboBoxModel( lista.toArray() )  );
+                                   
+        } catch (HibernateException  ex) {
+            JOptionPane.showMessageDialog(janelaPrincipal, "Erro ao carregar pizzas. " + ex.getMessage() );          
+        } 
+        
+    }
 }

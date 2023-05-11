@@ -6,6 +6,7 @@
 package Janelas;
 
 import Controladora.Interface_Grafica;
+import Dominio.Pizza;
 
 /**
  *
@@ -65,7 +66,7 @@ public class janelaPadrao extends javax.swing.JFrame {
         radioCheddar = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
         botAdicionarPizza = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbPizzas = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         chkCebola = new javax.swing.JCheckBox();
         chkMussarela = new javax.swing.JCheckBox();
@@ -92,6 +93,11 @@ public class janelaPadrao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Criar Pedido");
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -254,15 +260,13 @@ public class janelaPadrao extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, 0, 208, Short.MAX_VALUE)
+                .addComponent(cmbPizzas, 0, 208, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(botAdicionarPizza)
                 .addGap(26, 26, 26))
@@ -272,7 +276,7 @@ public class janelaPadrao extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botAdicionarPizza))
                 .addGap(35, 35, 35))
         );
@@ -555,6 +559,10 @@ public class janelaPadrao extends javax.swing.JFrame {
         botPesquisar.setVisible(true);
     }//GEN-LAST:event_botLimparActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        gerIG.carregarCombo(cmbPizzas, Pizza.class);
+    }//GEN-LAST:event_formComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botAdicionar;
@@ -579,9 +587,9 @@ public class janelaPadrao extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkOvo;
     private javax.swing.JCheckBox chkPalmito;
     private javax.swing.JCheckBox chkPresunto;
+    private javax.swing.JComboBox<String> cmbPizzas;
     private javax.swing.ButtonGroup grupoBorda;
     private javax.swing.ButtonGroup grupoTamanho;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
