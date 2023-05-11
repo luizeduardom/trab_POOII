@@ -20,10 +20,10 @@ public class Pizza implements Serializable {
 
     /*|-------------------| relacionamentos |-------------------|*/
     @OneToMany(mappedBy = "pizza", fetch = FetchType.LAZY)
-    private List<ItensPedido> itensPedido = new ArrayList<>();
+    private List<ItensPedido> itensPedido;
 
     @OneToMany(mappedBy = "pizza", fetch = FetchType.LAZY)
-    private List<Ingrediente> ingrediente = new ArrayList<>();
+    private List<Ingrediente> ingrediente;
 
     /*|-------------------| relacionamentos |-------------------|*/
     @Column(name = "nomePizza", nullable = false)
@@ -40,6 +40,8 @@ public class Pizza implements Serializable {
         this.idPizza = idPizza;
         this.nomePizza = nomePizza;
         this.valorPizza = valorPizza;
+        this.itensPedido = new ArrayList();
+        this.ingrediente = new ArrayList();
     }
 
     /*|-------------------| construtor |-------------------|*/
@@ -82,4 +84,11 @@ public class Pizza implements Serializable {
     }
 
     /*|-------------------| getters & setters |-------------------|*/
+
+    @Override
+    public String toString() {
+        return nomePizza;
+    }
+    
+    
 }

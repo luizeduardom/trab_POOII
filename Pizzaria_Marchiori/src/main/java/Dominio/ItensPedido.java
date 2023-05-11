@@ -50,6 +50,10 @@ public class ItensPedido implements Serializable {
         this.pizza = pizza;
         this.qntd = qntd;
     }
+
+    public ItensPedido() {
+    }
+    
     
      /*|-------------------| construtor |-------------------|*/
     

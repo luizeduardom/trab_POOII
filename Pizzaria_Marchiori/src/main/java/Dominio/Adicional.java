@@ -33,6 +33,12 @@ public class Adicional implements Serializable {
     @Column(name = "precoAdicional", nullable = false)
     private float preco;
 
+    public Adicional() {
+    }
+
+    
+    
+    
     /*|-------------------| construtor |-------------------|*/
     public Adicional(int idAdicional, String nome, float preco) {
         this.idAdicional = idAdicional;

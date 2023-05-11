@@ -43,6 +43,10 @@ public class Pedido implements Serializable {
         this.entrega = entrega;
         this.valorTotal = valorTotal;
     }
+
+    public Pedido() {
+    }
+    
     
     /*|-------------------| construtor |-------------------|*/
     

@@ -34,6 +34,11 @@ public class Ingrediente implements Serializable {
         this.nomeIngrediente = nomeIngrediente;
         this.pizza = pizza;
     }
+
+    public Ingrediente() {
+    }
+    
+    
     
     /*|-------------------| construtor |-------------------|*/
 

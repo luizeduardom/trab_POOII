@@ -21,7 +21,7 @@ public class Interface_Grafica {
 
     private janelaPadrao janelaPrincipal = null;
     private janelaPizza janPizza = null;
-    private GerenciadorDominio gerDominio;
+    private GerenciadorDominio gerDominio = null;
 
     /**
      * @param args the command line arguments
@@ -58,7 +58,7 @@ public class Interface_Grafica {
     public Interface_Grafica() {
         try {
             gerDominio = new GerenciadorDominio();
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (HibernateException ex) {
             JOptionPane.showMessageDialog(janPizza, "Erro de conexão com o banco. " + ex.getMessage());
             System.exit(-1);
         }
@@ -95,15 +95,18 @@ public class Interface_Grafica {
         System.exit(0);
     }
 
-      public void carregarCombo(JComboBox combo, Class classe) {
-        
+    public void carregarCombo(JComboBox combo, Class classe) {
+        System.out.println("passei por aqui em!");
         try {
+            System.out.println("to ainda aqui");
             List<Pizza> lista = gerDominio.listar(classe);
-            combo.setModel( new DefaultComboBoxModel( lista.toArray() )  );
-                                   
-        } catch (HibernateException  ex) {
-            JOptionPane.showMessageDialog(janelaPrincipal, "Erro ao carregar pizzas. " + ex.getMessage() );          
-        } 
-        
+            System.out.println("morri?");
+            combo.setModel(new DefaultComboBoxModel(lista.toArray()));
+
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(janelaPrincipal, "Erro ao carregar pizzas. " + ex.getMessage());
+            throw new HibernateException(ex);
+        }
+
     }
 }

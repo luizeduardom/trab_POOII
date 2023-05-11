@@ -2,13 +2,13 @@ Janelas\janelaPadrao.class
 Janelas\janelaPadrao$1.class
 Janelas\janelaPizza$3.class
 Janelas\janelaPadrao$6.class
-dao\PedidoDAO.class
 Janelas\janelaPadrao$4.class
-dao\PizzaDAO.class
 Janelas\janelaPadrao$9.class
 Janelas\janelaPizza$1.class
+DAO\GenericDAO.class
+DAO\ConexaoHibernate.class
 Janelas\janelaPadrao$7.class
-dao\ConexaoHibernate.class
+Janelas\janelaPadrao$10.class
 Janelas\janelaPizza$2.class
 Dominio\Adicional.class
 Controladora\Interface_Grafica.class

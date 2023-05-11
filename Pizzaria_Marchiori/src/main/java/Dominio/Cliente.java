@@ -49,9 +49,14 @@ public class Cliente implements Serializable {
         this.numero = numero;
         this.telefone = telefone;
     }
+
+    public Cliente() {
+    }
+    
     
     /*|-------------------| construtor |-------------------|*/
 
+    
     /*|-------------------| getters & setters |-------------------|*/
     
     public int getIdCliente() {
