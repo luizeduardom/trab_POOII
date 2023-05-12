@@ -41,8 +41,7 @@ public class Cliente implements Serializable {
     
     /*|-------------------| construtor |-------------------|*/
     
-    public Cliente(int idCliente, String nome, String bairro, String rua, int numero, long telefone) {
-        this.idCliente = idCliente;
+    public Cliente(String nome,  int numero, String bairro, String rua, long telefone) {
         this.nome = nome;
         this.bairro = bairro;
         this.rua = rua;

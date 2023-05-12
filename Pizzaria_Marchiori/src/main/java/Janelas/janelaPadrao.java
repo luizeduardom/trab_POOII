@@ -6,7 +6,11 @@
 package Janelas;
 
 import Controladora.Interface_Grafica;
+import Dominio.Cliente;
 import Dominio.Pizza;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -15,9 +19,11 @@ import Dominio.Pizza;
 public class janelaPadrao extends javax.swing.JFrame {
 
     private Interface_Grafica gerIG;
+    private Cliente cliSelecionado;
 
     public janelaPadrao(Interface_Grafica gerIG) {
         this.gerIG = gerIG;
+        this.cliSelecionado = null;
         initComponents();
         esconderBotoes();
 
@@ -37,7 +43,7 @@ public class janelaPadrao extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
         lblBairro = new javax.swing.JLabel();
         lblRua = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
@@ -105,8 +111,8 @@ public class janelaPadrao extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setText("Nome");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 114, -1, -1));
+        lblNome.setText("Nome");
+        jPanel3.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 114, -1, -1));
 
         lblBairro.setText("Bairro");
         jPanel3.add(lblBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 145, -1, -1));
@@ -152,6 +158,11 @@ public class janelaPadrao extends javax.swing.JFrame {
         jPanel3.add(botPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 52, 136, -1));
 
         botAdicionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/verifica.png"))); // NOI18N
+        botAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botAdicionarClienteActionPerformed(evt);
+            }
+        });
         jPanel3.add(botAdicionarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, 45));
 
         botLimpar.setText("Cancelar");
@@ -527,6 +538,7 @@ public class janelaPadrao extends javax.swing.JFrame {
     private void botCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCriarActionPerformed
         mostrarBotoes();
         botPesquisar.setVisible(false);
+        botCriar.setVisible(false);
     }//GEN-LAST:event_botCriarActionPerformed
 
     private void botPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPesquisarActionPerformed
@@ -560,9 +572,94 @@ public class janelaPadrao extends javax.swing.JFrame {
     }//GEN-LAST:event_botLimparActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        System.out.println("oi to aqui");
         gerIG.carregarCombo(cmbPizzas, Pizza.class);
     }//GEN-LAST:event_formComponentShown
+
+    private void botAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarClienteActionPerformed
+        String nome = txtNome.getText();
+        int numero = Integer.parseInt(txtNumero.getText());
+        String bairro = txtBairro.getText();
+        String rua = txtRua.getText();
+        String telefone = txtTelefone.getText();
+        //String telefone = Long.parseLong(txtTelefone.getText());
+        telefone = telefone.replace("(","");
+        telefone = telefone.replace(")","");
+        telefone = telefone.replace("-","");
+        if ( validarCampos()) {
+            // INSERIR NO BANCO
+            try {
+                
+                if ( cliSelecionado == null) {
+                    // INSERIR
+                    long tel = Long.parseLong(telefone);
+                    int id = gerIG.getGerDominio().inserirCliente(nome, numero, bairro, rua, tel);
+                    JOptionPane.showMessageDialog(this, "Cliente " + id + "inserido com sucesso.", "Inserir Cliente", JOptionPane.INFORMATION_MESSAGE  );
+                } else {
+                    System.out.println("oi, to passando");
+                }
+                
+            } catch (HibernateException ex) {
+                JOptionPane.showMessageDialog(this, ex, "ERRO Cliente", JOptionPane.ERROR_MESSAGE  );
+            }
+            catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex, "ERRO Cliente", JOptionPane.ERROR_MESSAGE  );
+            }
+            
+        
+        }
+    }//GEN-LAST:event_botAdicionarClienteActionPerformed
+
+    private boolean validarCampos() {
+
+        String msgErro = "";
+
+        lblNome.setForeground(Color.black);
+        lblBairro.setForeground(Color.black);
+        lblNumero.setForeground(Color.black);
+        lblRua.setForeground(Color.black);
+        lblTelefone.setForeground(Color.black);
+
+        if (txtNome.getText().isEmpty()) {
+            msgErro = msgErro + "Digite seu nome.\n";
+            lblNome.setForeground(Color.red);
+        }
+
+        if (txtBairro.getText().isEmpty()) {
+            msgErro = msgErro + "Digite seu bairro.\n";
+            lblBairro.setForeground(Color.red);
+        }
+
+        if (txtRua.getText().isEmpty()) {
+            msgErro = msgErro + "Digite sua rua.\n";
+            lblRua.setForeground(Color.red);
+        }
+
+        try {
+            int num = Integer.parseInt(txtNumero.getText());
+        } catch (NumberFormatException erro) {
+            msgErro = msgErro + "Número inválido.\n";
+            lblNumero.setForeground(Color.red);
+        }
+
+        try {
+            String telefone = txtTelefone.getText();
+            telefone = telefone.replace("(","");
+            telefone = telefone.replace(")","");
+            telefone = telefone.replace("-","");
+            long num = Long.parseLong(telefone);
+        } catch (NumberFormatException erro) {
+            msgErro = msgErro + "Telefone inválido.\n";
+            lblTelefone.setForeground(Color.red);
+
+        // COLOCAR VALIDAÇÃO DOS OUTROS CAMPOS
+        if (msgErro.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, msgErro, "ERRO Cliente", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -593,7 +690,6 @@ public class janelaPadrao extends javax.swing.JFrame {
     private javax.swing.ButtonGroup grupoTamanho;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
@@ -609,6 +705,7 @@ public class janelaPadrao extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lblBairro;
+    private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblRua;
     private javax.swing.JLabel lblTelefone;

@@ -2,7 +2,7 @@ package Controladora;
 
 import DAO.ConexaoHibernate;
 import DAO.GenericDAO;
-import java.sql.SQLException;
+import Dominio.Cliente;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -21,9 +21,20 @@ public class GerenciadorDominio {
     }
 
     public List listar(Class classe) throws HibernateException {
-        System.out.println("falhei no generic");
         return genDao.listar(classe);
 
+    }
+    
+    public int inserirCliente ( String nome,  int numero, String bairro, String rua, long telefone) throws HibernateException {
+        Cliente cli = new Cliente(nome, numero, bairro, rua, telefone);
+        genDao.inserir(cli);
+        return cli.getIdCliente();
+    }
+    
+   
+    public void alterarCliente(Cliente cli, String nome,  int numero, String bairro, String rua, long telefone) throws HibernateException   {
+
+           
     }
 
 }

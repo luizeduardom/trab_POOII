@@ -54,6 +54,10 @@ public class Interface_Grafica {
         //</editor-fold>
 
     }
+    
+    public GerenciadorDominio getGerDominio() {
+        return gerDominio;
+    }
 
     public Interface_Grafica() {
         try {
@@ -96,11 +100,8 @@ public class Interface_Grafica {
     }
 
     public void carregarCombo(JComboBox combo, Class classe) {
-        System.out.println("passei por aqui em!");
         try {
-            System.out.println("to ainda aqui");
             List<Pizza> lista = gerDominio.listar(classe);
-            System.out.println("morri?");
             combo.setModel(new DefaultComboBoxModel(lista.toArray()));
 
         } catch (HibernateException ex) {
