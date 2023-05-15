@@ -1,11 +1,11 @@
 package Controladora;
 
 import Dominio.Pizza;
-import Janelas.janelaPizza;
-import Janelas.janelaPadrao;
+import Janelas.JanelaCadPizza;
+import Janelas.JanelaPesqCliente;
+import Janelas.JanelaPrincipal;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -19,9 +19,11 @@ import org.hibernate.HibernateException;
  */
 public class Interface_Grafica {
 
-    private janelaPadrao janelaPrincipal = null;
-    private janelaPizza janPizza = null;
+    private JanelaPrincipal janelaPrincipal = null;
+    private JanelaCadPizza janPizza = null;
     private GerenciadorDominio gerDominio = null;
+    private JanelaPesqCliente janPesqCliente = null;
+    protected String editarPizza;
 
     /**
      * @param args the command line arguments
@@ -42,21 +44,31 @@ public class Interface_Grafica {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(janelaPadrao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(janelaPadrao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(janelaPadrao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(janelaPadrao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
     }
-    
+
     public GerenciadorDominio getGerDominio() {
         return gerDominio;
+    }
+
+    public String getEditarPizza() {
+        return editarPizza;
+    }
+
+    public void setEditarPizza(String editarPizza) {
+        this.editarPizza = editarPizza;
     }
 
     public Interface_Grafica() {
@@ -69,7 +81,7 @@ public class Interface_Grafica {
     }
 
     public void abrirJanelaPrincipal() {
-        janelaPrincipal = new janelaPadrao(this);
+        janelaPrincipal = new JanelaPrincipal(this);
         janelaPrincipal.setVisible(true);
 
     }
@@ -85,7 +97,12 @@ public class Interface_Grafica {
     }
 
     public void janelaCadPizza() {
-        janPizza = (janelaPizza) abrirJanela(janelaPrincipal, janPizza, janelaPizza.class);
+        janPizza = (JanelaCadPizza) abrirJanela(janelaPrincipal, janPizza, JanelaCadPizza.class);
+
+    }
+
+    public void janelaPesqCliente() {
+        janPesqCliente = (JanelaPesqCliente) abrirJanela(janelaPrincipal, janPesqCliente, JanelaPesqCliente.class);
 
     }
 

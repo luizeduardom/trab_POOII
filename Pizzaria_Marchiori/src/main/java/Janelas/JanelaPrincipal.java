@@ -16,16 +16,15 @@ import org.hibernate.HibernateException;
  *
  * @author luiz.marchiori
  */
-public class janelaPadrao extends javax.swing.JFrame {
+public class JanelaPrincipal extends javax.swing.JFrame {
 
     private Interface_Grafica gerIG;
     private Cliente cliSelecionado;
 
-    public janelaPadrao(Interface_Grafica gerIG) {
+    public JanelaPrincipal(Interface_Grafica gerIG) {
         this.gerIG = gerIG;
         this.cliSelecionado = null;
         initComponents();
-        esconderBotoes();
 
     }
 
@@ -53,7 +52,6 @@ public class janelaPadrao extends javax.swing.JFrame {
         txtRua = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
-        botCriar = new javax.swing.JButton();
         botPesquisar = new javax.swing.JButton();
         botAdicionarCliente = new javax.swing.JButton();
         botLimpar = new javax.swing.JButton();
@@ -71,8 +69,9 @@ public class janelaPadrao extends javax.swing.JFrame {
         radioCatupiry = new javax.swing.JRadioButton();
         radioCheddar = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
-        botAdicionarPizza = new javax.swing.JButton();
+        botEditarPizza = new javax.swing.JButton();
         cmbPizzas = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         chkCebola = new javax.swing.JCheckBox();
         chkMussarela = new javax.swing.JCheckBox();
@@ -139,15 +138,6 @@ public class janelaPadrao extends javax.swing.JFrame {
         jPanel3.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 142, 228, -1));
         jPanel3.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 111, 228, -1));
 
-        botCriar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/botao-adicionar.png"))); // NOI18N
-        botCriar.setText("Adicionar");
-        botCriar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botCriarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(botCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 52, 130, -1));
-
         botPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/lupa.png"))); // NOI18N
         botPesquisar.setText("Pesquisar");
         botPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +145,7 @@ public class janelaPadrao extends javax.swing.JFrame {
                 botPesquisarActionPerformed(evt);
             }
         });
-        jPanel3.add(botPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 52, 136, -1));
+        jPanel3.add(botPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 136, -1));
 
         botAdicionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/verifica.png"))); // NOI18N
         botAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +155,7 @@ public class janelaPadrao extends javax.swing.JFrame {
         });
         jPanel3.add(botAdicionarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, 45));
 
-        botLimpar.setText("Cancelar");
+        botLimpar.setText("Limpar");
         botLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botLimparActionPerformed(evt);
@@ -227,7 +217,7 @@ public class janelaPadrao extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioGrande)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -263,11 +253,19 @@ public class janelaPadrao extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Pizzas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        botAdicionarPizza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/botao-adicionar.png"))); // NOI18N
-        botAdicionarPizza.setText("Adicionar nova pizza");
-        botAdicionarPizza.addActionListener(new java.awt.event.ActionListener() {
+        botEditarPizza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/selecione.png"))); // NOI18N
+        botEditarPizza.setText("Editar Pizza");
+        botEditarPizza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botAdicionarPizzaActionPerformed(evt);
+                botEditarPizzaActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/conjunto-de-setas-de-sincronizacao.png"))); // NOI18N
+        jButton1.setText("Atualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -279,17 +277,22 @@ public class janelaPadrao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(cmbPizzas, 0, 208, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(botAdicionarPizza)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botEditarPizza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botAdicionarPizza))
-                .addGap(35, 35, 35))
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(cmbPizzas)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(botEditarPizza)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addGap(22, 22, 22))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -392,11 +395,11 @@ public class janelaPadrao extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome", "Pizza", "Ingredientes", "Adicionais"
+                "Nome da Pizza", "Tamanho", "Ingredientes", "Adicionais"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -481,7 +484,7 @@ public class janelaPadrao extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -504,50 +507,19 @@ public class janelaPadrao extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mostrarBotoes() {
-        lblBairro.setVisible(true);
-        txtBairro.setVisible(true);
-        lblNumero.setVisible(true);
-        txtNumero.setVisible(true);
-        lblRua.setVisible(true);
-        txtRua.setVisible(true);
-        lblTelefone.setVisible(true);
-        txtTelefone.setVisible(true);
-        botAdicionarCliente.setVisible(true);
-        botLimpar.setVisible(true);
 
-    }
-
-    private void esconderBotoes() {
-        lblBairro.setVisible(false);
-        txtBairro.setVisible(false);
-        lblNumero.setVisible(false);
-        txtNumero.setVisible(false);
-        lblRua.setVisible(false);
-        txtRua.setVisible(false);
-        lblTelefone.setVisible(false);
-        txtTelefone.setVisible(false);
-        botAdicionarCliente.setVisible(false);
-        botLimpar.setVisible(false);
-
-    }
     private void radioCheddarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCheddarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioCheddarActionPerformed
 
-    private void botCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCriarActionPerformed
-        mostrarBotoes();
-        botPesquisar.setVisible(false);
-        botCriar.setVisible(false);
-    }//GEN-LAST:event_botCriarActionPerformed
-
     private void botPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPesquisarActionPerformed
-
+        gerIG.janelaPesqCliente();
     }//GEN-LAST:event_botPesquisarActionPerformed
 
-    private void botAdicionarPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarPizzaActionPerformed
+    private void botEditarPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEditarPizzaActionPerformed
+        gerIG.setEditarPizza(cmbPizzas.getSelectedItem().toString());
         gerIG.janelaCadPizza();
-    }//GEN-LAST:event_botAdicionarPizzaActionPerformed
+    }//GEN-LAST:event_botEditarPizzaActionPerformed
 
     private void botAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarActionPerformed
         // TODO add your handling code here:
@@ -567,8 +539,6 @@ public class janelaPadrao extends javax.swing.JFrame {
         txtNumero.setText("");
         txtRua.setText("");
         txtTelefone.setText("");
-        esconderBotoes();
-        botPesquisar.setVisible(true);
     }//GEN-LAST:event_botLimparActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -576,38 +546,38 @@ public class janelaPadrao extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void botAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarClienteActionPerformed
+
         String nome = txtNome.getText();
-        int numero = Integer.parseInt(txtNumero.getText());
+        String numero = txtNumero.getText();
         String bairro = txtBairro.getText();
         String rua = txtRua.getText();
         String telefone = txtTelefone.getText();
-        //String telefone = Long.parseLong(txtTelefone.getText());
-        telefone = telefone.replace("(","");
-        telefone = telefone.replace(")","");
-        telefone = telefone.replace("-","");
-        if ( validarCampos()) {
+
+        if (validarCampos()) {
             // INSERIR NO BANCO
             try {
-                
-                if ( cliSelecionado == null) {
-                    // INSERIR
+                telefone = telefone.replace("(", "");
+                telefone = telefone.replace(")", "");
+                telefone = telefone.replace("-", "");
+                int num = Integer.parseInt(numero);
+
+                if (cliSelecionado == null) {
+
                     long tel = Long.parseLong(telefone);
-                    int id = gerIG.getGerDominio().inserirCliente(nome, numero, bairro, rua, tel);
-                    JOptionPane.showMessageDialog(this, "Cliente " + id + "inserido com sucesso.", "Inserir Cliente", JOptionPane.INFORMATION_MESSAGE  );
-                } else {
-                    System.out.println("oi, to passando");
+                    int id = gerIG.getGerDominio().inserirCliente(nome, num, bairro, rua, tel);
+                    JOptionPane.showMessageDialog(this, "Cliente " + id + " " + "( " + nome + " )" + " inserido com sucesso.", "Inserir Cliente", JOptionPane.INFORMATION_MESSAGE);
                 }
-                
+
             } catch (HibernateException ex) {
-                JOptionPane.showMessageDialog(this, ex, "ERRO Cliente", JOptionPane.ERROR_MESSAGE  );
+                JOptionPane.showMessageDialog(this, ex, "ERRO Cliente", JOptionPane.ERROR_MESSAGE);
             }
-            catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex, "ERRO Cliente", JOptionPane.ERROR_MESSAGE  );
-            }
-            
-        
+
         }
     }//GEN-LAST:event_botAdicionarClienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        gerIG.carregarCombo(cmbPizzas, Pizza.class);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private boolean validarCampos() {
 
@@ -619,17 +589,16 @@ public class janelaPadrao extends javax.swing.JFrame {
         lblRua.setForeground(Color.black);
         lblTelefone.setForeground(Color.black);
 
-        if (txtNome.getText().isEmpty()) {
+        if (txtNome.getText().equals("")) {
             msgErro = msgErro + "Digite seu nome.\n";
             lblNome.setForeground(Color.red);
         }
-
-        if (txtBairro.getText().isEmpty()) {
+        if (txtBairro.getText().equals("")) {
             msgErro = msgErro + "Digite seu bairro.\n";
             lblBairro.setForeground(Color.red);
         }
 
-        if (txtRua.getText().isEmpty()) {
+        if (txtRua.getText().equals("")) {
             msgErro = msgErro + "Digite sua rua.\n";
             lblRua.setForeground(Color.red);
         }
@@ -643,14 +612,14 @@ public class janelaPadrao extends javax.swing.JFrame {
 
         try {
             String telefone = txtTelefone.getText();
-            telefone = telefone.replace("(","");
-            telefone = telefone.replace(")","");
-            telefone = telefone.replace("-","");
+            telefone = telefone.replace("(", "");
+            telefone = telefone.replace(")", "");
+            telefone = telefone.replace("-", "");
             long num = Long.parseLong(telefone);
         } catch (NumberFormatException erro) {
             msgErro = msgErro + "Telefone inválido.\n";
             lblTelefone.setForeground(Color.red);
-
+        }
         // COLOCAR VALIDAÇÃO DOS OUTROS CAMPOS
         if (msgErro.isEmpty()) {
             return true;
@@ -658,15 +627,13 @@ public class janelaPadrao extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, msgErro, "ERRO Cliente", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botAdicionar;
     private javax.swing.JButton botAdicionarCliente;
-    private javax.swing.JButton botAdicionarPizza;
-    private javax.swing.JButton botCriar;
+    private javax.swing.JButton botEditarPizza;
     private javax.swing.JButton botEncerrar;
     private javax.swing.JButton botLimpar;
     private javax.swing.JButton botPesquisar;
@@ -688,6 +655,7 @@ public class janelaPadrao extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbPizzas;
     private javax.swing.ButtonGroup grupoBorda;
     private javax.swing.ButtonGroup grupoTamanho;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

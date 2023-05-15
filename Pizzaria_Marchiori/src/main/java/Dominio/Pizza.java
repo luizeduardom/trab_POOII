@@ -87,7 +87,7 @@ public class Pizza implements Serializable {
 
     @Override
     public String toString() {
-        return nomePizza;
+        return nomePizza + " ( " + valorPizza + " )";
     }
     
     

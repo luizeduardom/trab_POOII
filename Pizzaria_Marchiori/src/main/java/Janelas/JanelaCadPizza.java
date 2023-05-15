@@ -11,16 +11,14 @@ import Controladora.Interface_Grafica;
  *
  * @author luiz.marchiori
  */
-public class janelaPizza extends javax.swing.JDialog {
+public class JanelaCadPizza extends javax.swing.JDialog {
 
-   private Interface_Grafica gerIG;
-    
-    
-    public janelaPizza(java.awt.Frame parent, boolean modal, Interface_Grafica gerIG ) {
+    private Interface_Grafica gerIG;
+
+    public JanelaCadPizza(java.awt.Frame parent, boolean modal, Interface_Grafica gerIG) {
         initComponents();
         this.gerIG = gerIG;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,7 +31,7 @@ public class janelaPizza extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         labNomePizza1 = new javax.swing.JLabel();
-        txtNomePizza1 = new javax.swing.JTextField();
+        txtNomePizza = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         chkQueijo1 = new javax.swing.JCheckBox();
         chkCalabresa1 = new javax.swing.JCheckBox();
@@ -62,10 +60,23 @@ public class janelaPizza extends javax.swing.JDialog {
         botConfirmar1 = new javax.swing.JButton();
         botCancelar1 = new javax.swing.JButton();
 
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Criar Pizza", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Editar Pizza", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel2ComponentShown(evt);
+            }
+        });
 
         labNomePizza1.setText("Nome da Pizza");
+
+        txtNomePizza.setEditable(false);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Ingredientes");
@@ -212,7 +223,7 @@ public class janelaPizza extends javax.swing.JDialog {
                                     .addComponent(labNomePizza1)
                                     .addComponent(chkQueijo1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNomePizza1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtNomePizza, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(botCancelar1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -225,7 +236,7 @@ public class janelaPizza extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labNomePizza1)
-                    .addComponent(txtNomePizza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomePizza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(14, 14, 14)
@@ -301,6 +312,15 @@ public class janelaPizza extends javax.swing.JDialog {
         gerIG.janelaCadPizzaFechar(this);
     }//GEN-LAST:event_botCancelar1ActionPerformed
 
+    private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
+
+    }//GEN-LAST:event_jPanel2ComponentShown
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        String nomePizza = gerIG.getEditarPizza();
+        txtNomePizza.setText(nomePizza);
+    }//GEN-LAST:event_formComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox ChkPeitoDePeru1;
@@ -332,6 +352,6 @@ public class janelaPizza extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labNomePizza1;
-    private javax.swing.JTextField txtNomePizza1;
+    private javax.swing.JTextField txtNomePizza;
     // End of variables declaration//GEN-END:variables
 }
