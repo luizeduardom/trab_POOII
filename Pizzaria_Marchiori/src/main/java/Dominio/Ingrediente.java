@@ -68,4 +68,11 @@ public class Ingrediente implements Serializable {
     }
 
     /*|-------------------| getters & setters |-------------------|*/
+
+    @Override
+    public String toString() {
+        return nomeIngrediente;
+    }
+    
+    
 }

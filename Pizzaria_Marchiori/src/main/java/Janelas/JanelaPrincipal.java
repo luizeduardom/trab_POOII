@@ -7,7 +7,9 @@ package Janelas;
 
 import Controladora.GerenciadorDominio;
 import Controladora.Interface_Grafica;
+import Dominio.Adicional;
 import Dominio.Cliente;
+import Dominio.Ingrediente;
 import Dominio.Pizza;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -25,6 +27,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private Interface_Grafica gerIG;
     private Cliente cliSelecionado;
     private double subtotal = 0;
+    private int entregar = 0;
+    private String tamanho = "";
 
     public JanelaPrincipal(Interface_Grafica gerIG) {
         this.gerIG = gerIG;
@@ -173,14 +177,18 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         radioPequena.setBackground(new java.awt.Color(255, 255, 255));
         grupoTamanho.add(radioPequena);
+        radioPequena.setMnemonic('P');
         radioPequena.setText("Pequena");
 
         radioMedia.setBackground(new java.awt.Color(255, 255, 255));
         grupoTamanho.add(radioMedia);
+        radioMedia.setMnemonic('M');
         radioMedia.setText("Média");
 
         radioGrande.setBackground(new java.awt.Color(255, 255, 255));
         grupoTamanho.add(radioGrande);
+        radioGrande.setMnemonic('G');
+        radioGrande.setSelected(true);
         radioGrande.setText("Grande");
 
         jTextField5.setEditable(false);
@@ -305,6 +313,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel7.setLayout(new java.awt.GridLayout(6, 2));
 
         chkCebola.setBackground(new java.awt.Color(255, 255, 255));
+        chkCebola.setMnemonic('1');
         chkCebola.setText("Cebola (2,00)");
         jPanel7.add(chkCebola);
 
@@ -313,6 +322,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel7.add(chkMussarela);
 
         chkPalmito.setBackground(new java.awt.Color(255, 255, 255));
+        chkPalmito.setMnemonic('2');
         chkPalmito.setText("Palmito (2,00)");
         jPanel7.add(chkPalmito);
 
@@ -391,7 +401,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome da Pizza", "Tamanho", "Ingredientes", "Adicionais"
+                "Pizza", "Tamanho", "Ingredientes", "Adicionais"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -402,6 +412,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableCarrinho.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane3.setViewportView(jTableCarrinho);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/icone_pizza_maior.png"))); // NOI18N
@@ -518,35 +529,22 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botEditarPizzaActionPerformed
 
     private void botAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarActionPerformed
-        String tamanho = "";
-        String entregar = "";
-        List<String> adicional = new ArrayList();
-        if (radioPequena.isSelected()) {
-            tamanho = "Pequena";
+
+        List<Adicional> adicional = new ArrayList();
+        int tamanho = grupoTamanho.getSelection().getMnemonic();
+        if (radioPequena.isSelected()) {            
             subtotal += 30;
-        } else if (radioMedia.isSelected()) {
-            tamanho = "Media";
+        } else if (radioMedia.isSelected()) {            
             subtotal += 42;
 
-        } else if (radioGrande.isSelected()) {
-            tamanho = "Grande";
+        } else if (radioGrande.isSelected()) {            
             subtotal += 53;
-        } else {
-            JOptionPane.showMessageDialog(this, "Selecione um tamanho", "ERRO PEDIDO", JOptionPane.ERROR_MESSAGE);
-            return;
-
-        }
-
-        if (chkEntregar.isSelected()) {
-            entregar = "Sim";
-            subtotal += 2;
-        } else {
-            entregar = "Não";
-        }
+        } 
 
         if (chkMaionese.isSelected()) {
-            adicional.add("Maionese Caseira");
-            subtotal += 2;
+            Adicional adc = gerIG.getGerDominio().getAdicional( chkMaionese.getMnemonic()  );
+            adicional.add( adc );
+            subtotal += adc.getPreco();
         }
 
         if (chkBarbecue.isSelected()) {
@@ -621,28 +619,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
 
         // PEGAR OS CAMPOS
-        String nomePizza = cmbPizzas.getSelectedItem().toString();
+        Pizza pizza = (Pizza) cmbPizzas.getSelectedItem();
 
-        //Replace para pegar somente o nome da Pizza
-        nomePizza = nomePizza.replaceAll("[0-9]", "");
-        nomePizza = nomePizza.replace("(", "");
-        nomePizza = nomePizza.replace(")", "");
-        nomePizza = nomePizza.replace(".", "");
-
-        //Replace para pegar apenas o valor da pizza
-        String valor = cmbPizzas.getSelectedItem().toString();
-        valor = valor.replaceAll("[\\D]", "");
-        valor = valor.replace("(", "");
-        valor = valor.replace(")", "");
-
-        //Convertendo o valor
-        double aux = Double.parseDouble(valor);
-        aux = (aux / 100);
-        System.out.println("valor pizza: " + aux);
+        System.out.println("valor pizza: " + pizza.getValorPizza());
         System.out.println("valor subtotal: " + subtotal);
 
         //Somando o valor da pizza com os adicionais
-        subtotal += aux;
+        subtotal += pizza.getValorPizza();
 
         //Arredondando o valor
         subtotal = Math.ceil(subtotal);
@@ -652,24 +635,40 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         //Setando no campo de subtotal na interface gráfica
         txtTotal.setText(total);
-        //adicionarTabela(nomePizza, tamanho, ingredientes, adicional);
+        adicionarTabela(pizza, tamanho, adicional);
     }//GEN-LAST:event_botAdicionarActionPerformed
 
-    /*private void adicionarTabela(String nome, String tamanho, List<Ingrediente> ingredientes, List adicional) {
+    private void adicionarTabela(Pizza pizza, int tamanho, List adicional) {
 
         // ADICIONAR LINHA NA TABELA        
         ((DefaultTableModel) jTableCarrinho.getModel()).addRow(new Object[4]);
 
         int linha = jTableCarrinho.getRowCount() - 1;
         int coluna = 0;
-        jTableCarrinho.setValueAt(nome, linha, coluna++);
+        jTableCarrinho.setValueAt(pizza, linha, coluna++);
         jTableCarrinho.setValueAt(tamanho, linha, coluna++);
-        jTableCarrinho.setValueAt(ingredientes, linha, coluna++);
+        jTableCarrinho.setValueAt(pizza.getIngrediente(), linha, coluna++);
         jTableCarrinho.setValueAt(adicional, linha, coluna++);
 
-    }*/
+    }
     private void botEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEncerrarActionPerformed
-        // TODO add your handling code here:
+       if((JOptionPane.showConfirmDialog(null, "Deseja que seja entregue seu pedido? (Adicional de 2,00)", "Entrega Pedido", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0)){
+            entregar = 1;
+            subtotal += 2;
+            String total = String.valueOf(subtotal);
+            txtTotal.setText(total);
+    }
+        
+        if (cliSelecionado != null) {
+
+            int idPedido;
+
+            idPedido = gerIG.getGerDominio().inserirPedido(cliSelecionado, entregar, subtotal, jTableCarrinho);
+            JOptionPane.showMessageDialog(this, "Pedido " + idPedido + " inserido com sucesso.");
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um cliente.");
+        }
     }//GEN-LAST:event_botEncerrarActionPerformed
 
     private void botSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botSairActionPerformed

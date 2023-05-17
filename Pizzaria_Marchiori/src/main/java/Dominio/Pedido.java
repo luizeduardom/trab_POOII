@@ -33,17 +33,25 @@ public class Pedido implements Serializable {
     private int entrega;
     
     @Column(name = "valorTotal", nullable = false)
-    private float valorTotal;
+    private double valorTotal;
 
     /*|-------------------| construtor |-------------------|*/
     
-    public Pedido(int idPedido, Cliente cliente, int entrega, float valorTotal) {
+    public Pedido(int idPedido, Cliente cliente, int entrega, double valorTotal) {
         this.idPedido = idPedido;
         this.cliente = cliente;
         this.entrega = entrega;
         this.valorTotal = valorTotal;
     }
 
+    public Pedido(Cliente cliente, int entregar, double valorTotal) {
+        this.entrega = entregar;
+        this.valorTotal = valorTotal;
+        this.cliente = cliente;   
+        this.itenspedido = new ArrayList();
+    }
+
+    
     public Pedido() {
     }
     
@@ -81,7 +89,7 @@ public class Pedido implements Serializable {
         this.entrega = entrega;
     }
 
-    public float getValorTotal() {
+    public double getValorTotal() {
         return valorTotal;
     }
 

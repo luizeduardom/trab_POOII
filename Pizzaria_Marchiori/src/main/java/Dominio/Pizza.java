@@ -22,7 +22,7 @@ public class Pizza implements Serializable {
     @OneToMany(mappedBy = "pizza", fetch = FetchType.LAZY)
     private List<ItensPedido> itensPedido;
 
-    @OneToMany(mappedBy = "pizza", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "pizza", fetch = FetchType.EAGER)
     private List<Ingrediente> ingrediente;
 
     /*|-------------------| relacionamentos |-------------------|*/

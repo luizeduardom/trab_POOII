@@ -46,6 +46,13 @@ public class Adicional implements Serializable {
         this.preco = preco;
     }
 
+    public Adicional(String nome, float preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+    
+    
+
     /*|-------------------| construtor |-------------------|*/
  /*|-------------------| getters & setters |-------------------|*/
     public List<ItensPedido> getItenspedido() {

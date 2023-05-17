@@ -3,8 +3,13 @@ package Controladora;
 import DAO.ClienteDAO;
 import DAO.ConexaoHibernate;
 import DAO.GenericDAO;
+import Dominio.Adicional;
 import Dominio.Cliente;
+import Dominio.ItensPedido;
+import Dominio.Pedido;
+import Dominio.Pizza;
 import java.util.List;
+import javax.swing.JTable;
 import org.hibernate.HibernateException;
 
 /**
@@ -42,6 +47,34 @@ public class GerenciadorDominio {
     }
 
     public void alterarCliente(Cliente cli, String nome, int numero, String bairro, String rua, long telefone) throws HibernateException {
+
+    }
+
+    public Adicional getAdicional(int id) {
+
+        return (Adicional) genDao.load(Adicional.class, id);
+    }
+
+    public int inserirPedido(Cliente cli, int entrega, double total, JTable tblPedidos) {
+        Pedido pedido = new Pedido(cli, entrega, total);
+        List itens = pedido.getItenspedido();
+
+        int tam = tblPedidos.getRowCount();
+        if (tam > 0) {
+            for (int lin = 0; lin < tam; lin++) {
+                int col = 0;
+                Pizza pizza = (Pizza) tblPedidos.getValueAt(lin, col++);
+                char tamanho = (char) tblPedidos.getValueAt(lin, col++);
+                List adicionais = (List) tblPedidos.getValueAt(lin, col++);
+                ItensPedido item = new ItensPedido(pedido, pizza, tamanho, adicionais);
+
+                itens.add(item);
+            }
+            genDao.inserir(pedido);
+            return pedido.getIdPedido();
+        } else {
+            return -1;
+        }
 
     }
 

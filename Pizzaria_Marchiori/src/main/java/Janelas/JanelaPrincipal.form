@@ -400,6 +400,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="grupoTamanho"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="80"/>
                 <Property name="text" type="java.lang.String" value="Pequena"/>
               </Properties>
             </Component>
@@ -411,6 +412,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="grupoTamanho"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="77"/>
                 <Property name="text" type="java.lang.String" value="M&#xe9;dia"/>
               </Properties>
             </Component>
@@ -422,6 +424,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="grupoTamanho"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="71"/>
+                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Grande"/>
               </Properties>
             </Component>
@@ -625,6 +629,7 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="49"/>
                 <Property name="text" type="java.lang.String" value="Cebola (2,00)"/>
               </Properties>
             </Component>
@@ -641,6 +646,7 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="50"/>
                 <Property name="text" type="java.lang.String" value="Palmito (2,00)"/>
               </Properties>
             </Component>
@@ -792,12 +798,13 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="0">
-                    <Column editable="false" title="Nome da Pizza" type="java.lang.Object"/>
+                    <Column editable="false" title="Pizza" type="java.lang.Object"/>
                     <Column editable="false" title="Tamanho" type="java.lang.Object"/>
                     <Column editable="false" title="Ingredientes" type="java.lang.Object"/>
                     <Column editable="false" title="Adicionais" type="java.lang.Object"/>
                   </Table>
                 </Property>
+                <Property name="autoResizeMode" type="int" value="4"/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
