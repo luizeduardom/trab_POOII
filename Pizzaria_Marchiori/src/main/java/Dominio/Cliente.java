@@ -1,9 +1,11 @@
 package Dominio;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -115,4 +117,8 @@ public class Cliente implements Serializable {
     }
     
     /*|-------------------| Getters & Setters |-------------------|*/
+    
+    public Object[] toArray() throws ParseException {
+        return new Object[] { this, bairro,  rua, numero, telefone };
+    }
 }

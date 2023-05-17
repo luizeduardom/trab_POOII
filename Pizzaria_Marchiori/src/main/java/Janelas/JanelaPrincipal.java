@@ -5,11 +5,15 @@
  */
 package Janelas;
 
+import Controladora.GerenciadorDominio;
 import Controladora.Interface_Grafica;
 import Dominio.Cliente;
 import Dominio.Pizza;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
 
 /**
@@ -20,6 +24,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private Interface_Grafica gerIG;
     private Cliente cliSelecionado;
+    private double subtotal = 0;
 
     public JanelaPrincipal(Interface_Grafica gerIG) {
         this.gerIG = gerIG;
@@ -92,7 +97,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableCarrinho = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -374,25 +379,16 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Total");
 
         txtTotal.setEditable(false);
+        txtTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel8.setFont(new java.awt.Font("Utsaah", 1, 24)); // NOI18N
         jLabel8.setText("Marchiori's Pizzaria");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/pizza.png"))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome da Pizza", "Tamanho", "Ingredientes", "Adicionais"
@@ -406,7 +402,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(jTableCarrinho);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/icone_pizza_maior.png"))); // NOI18N
 
@@ -522,9 +518,156 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botEditarPizzaActionPerformed
 
     private void botAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarActionPerformed
-        // TODO add your handling code here:
+        String tamanho = "";
+        String entregar = "";
+        List<String> adicional = new ArrayList();
+        if (radioPequena.isSelected()) {
+            tamanho = "Pequena";
+            subtotal += 30;
+        } else if (radioMedia.isSelected()) {
+            tamanho = "Media";
+            subtotal += 42;
+
+        } else if (radioGrande.isSelected()) {
+            tamanho = "Grande";
+            subtotal += 53;
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um tamanho", "ERRO PEDIDO", JOptionPane.ERROR_MESSAGE);
+            return;
+
+        }
+
+        if (chkEntregar.isSelected()) {
+            entregar = "Sim";
+            subtotal += 2;
+        } else {
+            entregar = "Não";
+        }
+
+        if (chkMaionese.isSelected()) {
+            adicional.add("Maionese Caseira");
+            subtotal += 2;
+        }
+
+        if (chkBarbecue.isSelected()) {
+            adicional.add("Molho Barbecue");
+            subtotal += 3;
+        }
+
+        if (radioCatupiry.isSelected()) {
+            adicional.add("Borda Catupiry");
+            subtotal += 3;
+        }
+        if (radioCheddar.isSelected()) {
+            adicional.add("Borda Cheddar");
+            subtotal += 4.5;
+        }
+
+        if (chkCebola.isSelected()) {
+            adicional.add("Cebola");
+            subtotal += 2;
+        }
+
+        if (chkMussarela.isSelected()) {
+            adicional.add("Mussarela");
+            subtotal += 6;
+        }
+
+        if (chkPalmito.isSelected()) {
+            adicional.add("Palmito");
+            subtotal += 2;
+        }
+
+        if (chkPalmito.isSelected()) {
+            adicional.add("Palmito");
+            subtotal += 2;
+        }
+
+        if (chkBacon.isSelected()) {
+            adicional.add("Bacon");
+            subtotal += 4;
+        }
+
+        if (chkAzeitona.isSelected()) {
+            adicional.add("Azeitona");
+            subtotal += 2;
+        }
+
+        if (chkOregano.isSelected()) {
+            adicional.add("Oregano");
+            subtotal += 1;
+        }
+        if (chkPresunto.isSelected()) {
+            adicional.add("Presunto");
+            subtotal += 2;
+        }
+        if (chkLombo.isSelected()) {
+            adicional.add("Lombo Canadense");
+            subtotal += 4;
+        }
+        if (chkAlho.isSelected()) {
+            adicional.add("Alho Tostado");
+            subtotal += 1;
+        }
+
+        if (chkAtum.isSelected()) {
+            adicional.add("Atum");
+            subtotal += 5;
+        }
+
+        if (chkOvo.isSelected()) {
+            adicional.add("Ovo");
+            subtotal += 2;
+        }
+
+        // PEGAR OS CAMPOS
+        String nomePizza = cmbPizzas.getSelectedItem().toString();
+
+        //Replace para pegar somente o nome da Pizza
+        nomePizza = nomePizza.replaceAll("[0-9]", "");
+        nomePizza = nomePizza.replace("(", "");
+        nomePizza = nomePizza.replace(")", "");
+        nomePizza = nomePizza.replace(".", "");
+
+        //Replace para pegar apenas o valor da pizza
+        String valor = cmbPizzas.getSelectedItem().toString();
+        valor = valor.replaceAll("[\\D]", "");
+        valor = valor.replace("(", "");
+        valor = valor.replace(")", "");
+
+        //Convertendo o valor
+        double aux = Double.parseDouble(valor);
+        aux = (aux / 100);
+        System.out.println("valor pizza: " + aux);
+        System.out.println("valor subtotal: " + subtotal);
+
+        //Somando o valor da pizza com os adicionais
+        subtotal += aux;
+
+        //Arredondando o valor
+        subtotal = Math.ceil(subtotal);
+
+        //Convertendo o valor em double para String
+        String total = String.valueOf(subtotal);
+
+        //Setando no campo de subtotal na interface gráfica
+        txtTotal.setText(total);
+        //adicionarTabela(nomePizza, tamanho, ingredientes, adicional);
     }//GEN-LAST:event_botAdicionarActionPerformed
 
+    /*private void adicionarTabela(String nome, String tamanho, List<Ingrediente> ingredientes, List adicional) {
+
+        // ADICIONAR LINHA NA TABELA        
+        ((DefaultTableModel) jTableCarrinho.getModel()).addRow(new Object[4]);
+
+        int linha = jTableCarrinho.getRowCount() - 1;
+        int coluna = 0;
+        jTableCarrinho.setValueAt(nome, linha, coluna++);
+        jTableCarrinho.setValueAt(tamanho, linha, coluna++);
+        jTableCarrinho.setValueAt(ingredientes, linha, coluna++);
+        jTableCarrinho.setValueAt(adicional, linha, coluna++);
+
+    }*/
     private void botEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEncerrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botEncerrarActionPerformed
@@ -566,6 +709,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     long tel = Long.parseLong(telefone);
                     int id = gerIG.getGerDominio().inserirCliente(nome, num, bairro, rua, tel);
                     JOptionPane.showMessageDialog(this, "Cliente " + id + " " + "( " + nome + " )" + " inserido com sucesso.", "Inserir Cliente", JOptionPane.INFORMATION_MESSAGE);
+                    esconderCampos();
+                    botPesquisar.setVisible(false);
+                    botLimpar.setVisible(false);
+                    txtNome.setText(nome);
+                    txtNome.setEditable(false);
+                    botAdicionarCliente.setVisible(false);
                 }
 
             } catch (HibernateException ex) {
@@ -578,6 +727,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         gerIG.carregarCombo(cmbPizzas, Pizza.class);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void esconderCampos() {
+        txtNumero.setVisible(false);
+        lblNumero.setVisible(false);
+        txtBairro.setVisible(false);
+        lblBairro.setVisible(false);
+        txtRua.setVisible(false);
+        lblRua.setVisible(false);
+        txtTelefone.setVisible(false);
+        lblTelefone.setVisible(false);
+    }
 
     private boolean validarCampos() {
 
@@ -668,7 +828,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableCarrinho;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;

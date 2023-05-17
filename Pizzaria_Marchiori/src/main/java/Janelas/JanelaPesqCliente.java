@@ -6,6 +6,14 @@
 package Janelas;
 
 import Controladora.Interface_Grafica;
+import Dominio.Cliente;
+import java.text.ParseException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -14,12 +22,14 @@ import Controladora.Interface_Grafica;
 public class JanelaPesqCliente extends javax.swing.JDialog {
 
     private Interface_Grafica gerIG;
-    
+    private Cliente cliSelecionado;
+
     public JanelaPesqCliente(java.awt.Frame parent, boolean modal, Interface_Grafica gerIG) {
         super(parent, modal);
         initComponents();
         this.gerIG = gerIG;
-        
+        cliSelecionado = null;
+
     }
 
     /**
@@ -51,6 +61,11 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
 
         botPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/lupacliente.png"))); // NOI18N
         botPesquisar.setText("Pesquisar");
+        botPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPesquisarActionPerformed(evt);
+            }
+        });
 
         botSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/saircliente.png"))); // NOI18N
         botSair.setText("Sair");
@@ -62,21 +77,15 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
 
         botSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/selecione.png"))); // NOI18N
         botSelecionar.setText("Selecionar");
+        botSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botSelecionarActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Bairro", "Rua", "Número", "Telefone"
@@ -162,6 +171,10 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public Cliente getCliente() {
+        return cliSelecionado;
+    }
+
     private void botExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botExcluirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botExcluirActionPerformed
@@ -169,6 +182,34 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
     private void botSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botSairActionPerformed
         gerIG.janelaCadPizzaFechar(this);
     }//GEN-LAST:event_botSairActionPerformed
+
+    private void botPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPesquisarActionPerformed
+        try {
+            List<Cliente> lista = gerIG.getGerDominio().pesquisarCliente(txtNome.getText());
+
+            // APAGA as linhas da tabela
+            ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
+
+            for (Cliente cli : lista) {
+                // ADICIONAR LINHA NA TABELA        
+                ((DefaultTableModel) jTable1.getModel()).addRow(cli.toArray());
+            }
+
+        } catch (HibernateException | ParseException ex) {
+            JOptionPane.showMessageDialog(this, ex, "ERRO ao PESQUISAR Cliente", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botPesquisarActionPerformed
+
+    private void botSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botSelecionarActionPerformed
+        int linha = jTable1.getSelectedRow();
+        if (linha >= 0) {
+            cliSelecionado = (Cliente) jTable1.getValueAt(linha, 0);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
+        }
+
+        this.setVisible(false);
+    }//GEN-LAST:event_botSelecionarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
