@@ -28,7 +28,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private Cliente cliSelecionado;
     private double subtotal = 0;
     private int entregar = 0;
-    private String tamanho = "";
+    private char tamanho;
 
     public JanelaPrincipal(Interface_Grafica gerIG) {
         this.gerIG = gerIG;
@@ -72,11 +72,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        chkEntregar = new javax.swing.JCheckBox();
         chkMaionese = new javax.swing.JCheckBox();
-        chkBarbecue = new javax.swing.JCheckBox();
-        radioCatupiry = new javax.swing.JRadioButton();
         radioCheddar = new javax.swing.JRadioButton();
+        radioCatupiry = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
         botEditarPizza = new javax.swing.JButton();
         cmbPizzas = new javax.swing.JComboBox<>();
@@ -93,6 +91,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         chkAlho = new javax.swing.JCheckBox();
         chkAtum = new javax.swing.JCheckBox();
         chkOvo = new javax.swing.JCheckBox();
+        chkBarbecue = new javax.swing.JCheckBox();
         botAdicionar = new javax.swing.JButton();
         botEncerrar = new javax.swing.JButton();
         botSair = new javax.swing.JButton();
@@ -178,6 +177,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         radioPequena.setBackground(new java.awt.Color(255, 255, 255));
         grupoTamanho.add(radioPequena);
         radioPequena.setMnemonic('P');
+        radioPequena.setSelected(true);
         radioPequena.setText("Pequena");
 
         radioMedia.setBackground(new java.awt.Color(255, 255, 255));
@@ -188,7 +188,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         radioGrande.setBackground(new java.awt.Color(255, 255, 255));
         grupoTamanho.add(radioGrande);
         radioGrande.setMnemonic('G');
-        radioGrande.setSelected(true);
         radioGrande.setText("Grande");
 
         jTextField5.setEditable(false);
@@ -236,22 +235,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
 
-        chkEntregar.setBackground(new java.awt.Color(255, 255, 255));
-        chkEntregar.setText("Entregar (2,00)");
-        jPanel5.add(chkEntregar);
-
         chkMaionese.setBackground(new java.awt.Color(255, 255, 255));
         chkMaionese.setText("Maionese Caseira (2,00)");
+        chkMaionese.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMaioneseActionPerformed(evt);
+            }
+        });
         jPanel5.add(chkMaionese);
-
-        chkBarbecue.setBackground(new java.awt.Color(255, 255, 255));
-        chkBarbecue.setText("Molho Barbecue (3,00)");
-        jPanel5.add(chkBarbecue);
-
-        radioCatupiry.setBackground(new java.awt.Color(255, 255, 255));
-        grupoBorda.add(radioCatupiry);
-        radioCatupiry.setText("Borda Catupiry (3,00)");
-        jPanel5.add(radioCatupiry);
 
         radioCheddar.setBackground(new java.awt.Color(255, 255, 255));
         grupoBorda.add(radioCheddar);
@@ -262,6 +253,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
         jPanel5.add(radioCheddar);
+
+        radioCatupiry.setBackground(new java.awt.Color(255, 255, 255));
+        grupoBorda.add(radioCatupiry);
+        radioCatupiry.setText("Borda Catupiry (3,00)");
+        jPanel5.add(radioCatupiry);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Pizzas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -313,7 +309,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel7.setLayout(new java.awt.GridLayout(6, 2));
 
         chkCebola.setBackground(new java.awt.Color(255, 255, 255));
-        chkCebola.setMnemonic('1');
         chkCebola.setText("Cebola (2,00)");
         jPanel7.add(chkCebola);
 
@@ -322,7 +317,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel7.add(chkMussarela);
 
         chkPalmito.setBackground(new java.awt.Color(255, 255, 255));
-        chkPalmito.setMnemonic('2');
         chkPalmito.setText("Palmito (2,00)");
         jPanel7.add(chkPalmito);
 
@@ -357,6 +351,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         chkOvo.setBackground(new java.awt.Color(255, 255, 255));
         chkOvo.setText("Ovo (2,00)");
         jPanel7.add(chkOvo);
+
+        chkBarbecue.setBackground(new java.awt.Color(255, 255, 255));
+        chkBarbecue.setText("Molho Barbecue (3,00)");
+        jPanel7.add(chkBarbecue);
 
         botAdicionar.setBackground(new java.awt.Color(102, 255, 255));
         botAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/botao-adicionar.png"))); // NOI18N
@@ -483,11 +481,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(botAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -520,7 +521,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_radioCheddarActionPerformed
 
     private void botPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPesquisarActionPerformed
-        gerIG.janelaPesqCliente();
+        cliSelecionado = gerIG.janelaPesqCliente();
+        if (cliSelecionado != null) {
+            txtNome.setText(cliSelecionado.getNome());
+            esconderCampos();
+            botPesquisar.setVisible(false);
+            botLimpar.setVisible(false);
+            txtNome.setEditable(false);
+            botAdicionarCliente.setVisible(false);
+        }
     }//GEN-LAST:event_botPesquisarActionPerformed
 
     private void botEditarPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEditarPizzaActionPerformed
@@ -531,90 +540,99 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void botAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarActionPerformed
 
         List<Adicional> adicional = new ArrayList();
-        int tamanho = grupoTamanho.getSelection().getMnemonic();
-        if (radioPequena.isSelected()) {            
+        tamanho = (char) grupoTamanho.getSelection().getMnemonic();
+        if (radioPequena.isSelected()) {
             subtotal += 30;
-        } else if (radioMedia.isSelected()) {            
+        } else if (radioMedia.isSelected()) {
             subtotal += 42;
 
-        } else if (radioGrande.isSelected()) {            
+        } else if (radioGrande.isSelected()) {
             subtotal += 53;
-        } 
+        }
 
         if (chkMaionese.isSelected()) {
-            Adicional adc = gerIG.getGerDominio().getAdicional( chkMaionese.getMnemonic()  );
-            adicional.add( adc );
+            Adicional adc = gerIG.getGerDominio().getAdicional(1);
+            adicional.add(adc);
             subtotal += adc.getPreco();
         }
 
         if (chkBarbecue.isSelected()) {
-            adicional.add("Molho Barbecue");
+            Adicional adc = gerIG.getGerDominio().getAdicional(2);
+            adicional.add(adc);
             subtotal += 3;
         }
 
         if (radioCatupiry.isSelected()) {
-            adicional.add("Borda Catupiry");
+            Adicional adc = gerIG.getGerDominio().getAdicional(3);
+            adicional.add(adc);
             subtotal += 3;
         }
         if (radioCheddar.isSelected()) {
-            adicional.add("Borda Cheddar");
+            Adicional adc = gerIG.getGerDominio().getAdicional(4);
+            adicional.add(adc);
             subtotal += 4.5;
         }
 
         if (chkCebola.isSelected()) {
-            adicional.add("Cebola");
+            Adicional adc = gerIG.getGerDominio().getAdicional(5);
+            adicional.add(adc);
             subtotal += 2;
         }
 
         if (chkMussarela.isSelected()) {
-            adicional.add("Mussarela");
+            Adicional adc = gerIG.getGerDominio().getAdicional(6);
+            adicional.add(adc);
             subtotal += 6;
         }
 
         if (chkPalmito.isSelected()) {
-            adicional.add("Palmito");
-            subtotal += 2;
-        }
-
-        if (chkPalmito.isSelected()) {
-            adicional.add("Palmito");
+            Adicional adc = gerIG.getGerDominio().getAdicional(7);
+            adicional.add(adc);
             subtotal += 2;
         }
 
         if (chkBacon.isSelected()) {
-            adicional.add("Bacon");
+            Adicional adc = gerIG.getGerDominio().getAdicional(8);
+            adicional.add(adc);
             subtotal += 4;
         }
 
         if (chkAzeitona.isSelected()) {
-            adicional.add("Azeitona");
+            Adicional adc = gerIG.getGerDominio().getAdicional(9);
+            adicional.add(adc);
             subtotal += 2;
         }
 
         if (chkOregano.isSelected()) {
-            adicional.add("Oregano");
+            Adicional adc = gerIG.getGerDominio().getAdicional(10);
+            adicional.add(adc);
             subtotal += 1;
         }
         if (chkPresunto.isSelected()) {
-            adicional.add("Presunto");
+            Adicional adc = gerIG.getGerDominio().getAdicional(11);
+            adicional.add(adc);
             subtotal += 2;
         }
         if (chkLombo.isSelected()) {
-            adicional.add("Lombo Canadense");
+            Adicional adc = gerIG.getGerDominio().getAdicional(12);
+            adicional.add(adc);
             subtotal += 4;
         }
         if (chkAlho.isSelected()) {
-            adicional.add("Alho Tostado");
+            Adicional adc = gerIG.getGerDominio().getAdicional(13);
+            adicional.add(adc);
             subtotal += 1;
         }
 
         if (chkAtum.isSelected()) {
-            adicional.add("Atum");
+            Adicional adc = gerIG.getGerDominio().getAdicional(14);
+            adicional.add(adc);
             subtotal += 5;
         }
 
         if (chkOvo.isSelected()) {
-            adicional.add("Ovo");
+            Adicional adc = gerIG.getGerDominio().getAdicional(15);
+            adicional.add(adc);
             subtotal += 2;
         }
 
@@ -635,10 +653,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         //Setando no campo de subtotal na interface gráfica
         txtTotal.setText(total);
+        System.out.println(tamanho);
         adicionarTabela(pizza, tamanho, adicional);
     }//GEN-LAST:event_botAdicionarActionPerformed
 
-    private void adicionarTabela(Pizza pizza, int tamanho, List adicional) {
+    private void adicionarTabela(Pizza pizza, char tamanho, List adicional) {
 
         // ADICIONAR LINHA NA TABELA        
         ((DefaultTableModel) jTableCarrinho.getModel()).addRow(new Object[4]);
@@ -652,19 +671,21 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     }
     private void botEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEncerrarActionPerformed
-       if((JOptionPane.showConfirmDialog(null, "Deseja que seja entregue seu pedido? (Adicional de 2,00)", "Entrega Pedido", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0)){
+        if ((JOptionPane.showConfirmDialog(null, "Deseja que seja entregue seu pedido? (Adicional de 2,00)", "Entrega Pedido", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0)) {
             entregar = 1;
             subtotal += 2;
             String total = String.valueOf(subtotal);
             txtTotal.setText(total);
-    }
-        
+        }
+
         if (cliSelecionado != null) {
 
             int idPedido;
 
             idPedido = gerIG.getGerDominio().inserirPedido(cliSelecionado, entregar, subtotal, jTableCarrinho);
             JOptionPane.showMessageDialog(this, "Pedido " + idPedido + " inserido com sucesso.");
+            JOptionPane.showMessageDialog(this, "Logo mais sua pizza estará prontinha para você! ");
+            gerIG.encerrarPrograma(this);
 
         } else {
             JOptionPane.showMessageDialog(this, "Selecione um cliente.");
@@ -714,6 +735,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     txtNome.setText(nome);
                     txtNome.setEditable(false);
                     botAdicionarCliente.setVisible(false);
+                    cliSelecionado = gerIG.getGerDominio().getCliente(id);
                 }
 
             } catch (HibernateException ex) {
@@ -726,6 +748,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         gerIG.carregarCombo(cmbPizzas, Pizza.class);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void chkMaioneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMaioneseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkMaioneseActionPerformed
 
     private void esconderCampos() {
         txtNumero.setVisible(false);
@@ -803,7 +829,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkBacon;
     private javax.swing.JCheckBox chkBarbecue;
     private javax.swing.JCheckBox chkCebola;
-    private javax.swing.JCheckBox chkEntregar;
     private javax.swing.JCheckBox chkLombo;
     private javax.swing.JCheckBox chkMaionese;
     private javax.swing.JCheckBox chkMussarela;

@@ -88,4 +88,11 @@ public class Adicional implements Serializable {
     }
 
     /*|-------------------| getters & setters |-------------------|*/
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+    
+    
 }

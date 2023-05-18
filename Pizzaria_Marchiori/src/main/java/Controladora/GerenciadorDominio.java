@@ -54,6 +54,11 @@ public class GerenciadorDominio {
 
         return (Adicional) genDao.load(Adicional.class, id);
     }
+    
+    public Cliente getCliente(int id) {
+
+        return (Cliente) genDao.load(Cliente.class, id);
+    }
 
     public int inserirPedido(Cliente cli, int entrega, double total, JTable tblPedidos) {
         Pedido pedido = new Pedido(cli, entrega, total);

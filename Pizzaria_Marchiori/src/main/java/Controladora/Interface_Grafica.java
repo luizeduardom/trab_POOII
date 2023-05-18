@@ -1,5 +1,6 @@
 package Controladora;
 
+import Dominio.Cliente;
 import Dominio.Pizza;
 import Janelas.JanelaCadPizza;
 import Janelas.JanelaPesqCliente;
@@ -101,8 +102,9 @@ public class Interface_Grafica {
 
     }
 
-    public void janelaPesqCliente() {
+    public Cliente janelaPesqCliente() {
         janPesqCliente = (JanelaPesqCliente) abrirJanela(janelaPrincipal, janPesqCliente, JanelaPesqCliente.class);
+        return janPesqCliente.getCliente();
 
     }
 

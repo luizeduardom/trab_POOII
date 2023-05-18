@@ -121,4 +121,11 @@ public class Cliente implements Serializable {
     public Object[] toArray() throws ParseException {
         return new Object[] { this, bairro,  rua, numero, telefone };
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+    
+    
 }
