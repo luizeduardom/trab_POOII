@@ -100,7 +100,7 @@ public class Cliente implements Serializable {
         this.rua = rua;
     }
 
-    public int getNumero() {
+    public float getNumero() {
         return numero;
     }
 

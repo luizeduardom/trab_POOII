@@ -72,7 +72,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        chkMaionese = new javax.swing.JCheckBox();
+        jRadioButton1 = new javax.swing.JRadioButton();
         radioCheddar = new javax.swing.JRadioButton();
         radioCatupiry = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
@@ -92,6 +92,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         chkAtum = new javax.swing.JCheckBox();
         chkOvo = new javax.swing.JCheckBox();
         chkBarbecue = new javax.swing.JCheckBox();
+        chkMaionese = new javax.swing.JCheckBox();
         botAdicionar = new javax.swing.JButton();
         botEncerrar = new javax.swing.JButton();
         botSair = new javax.swing.JButton();
@@ -140,7 +141,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
         jPanel3.add(txtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 235, 228, -1));
 
-        txtNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        try {
+            txtNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jPanel3.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 204, 228, -1));
         jPanel3.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 173, 228, -1));
         jPanel3.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 142, 228, -1));
@@ -233,16 +238,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Bordas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        chkMaionese.setBackground(new java.awt.Color(255, 255, 255));
-        chkMaionese.setText("Maionese Caseira (2,00)");
-        chkMaionese.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkMaioneseActionPerformed(evt);
-            }
-        });
-        jPanel5.add(chkMaionese);
+        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
+        grupoBorda.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Borda Padrão");
+        jPanel5.add(jRadioButton1);
 
         radioCheddar.setBackground(new java.awt.Color(255, 255, 255));
         grupoBorda.add(radioCheddar);
@@ -355,6 +357,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         chkBarbecue.setBackground(new java.awt.Color(255, 255, 255));
         chkBarbecue.setText("Molho Barbecue (3,00)");
         jPanel7.add(chkBarbecue);
+
+        chkMaionese.setBackground(new java.awt.Color(255, 255, 255));
+        chkMaionese.setText("Maionese Caseira (2,00)");
+        chkMaionese.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMaioneseActionPerformed(evt);
+            }
+        });
+        jPanel7.add(chkMaionese);
 
         botAdicionar.setBackground(new java.awt.Color(102, 255, 255));
         botAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/botao-adicionar.png"))); // NOI18N
@@ -491,8 +502,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -525,7 +536,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         if (cliSelecionado != null) {
             txtNome.setText(cliSelecionado.getNome());
             esconderCampos();
-            botPesquisar.setVisible(false);
             botLimpar.setVisible(false);
             txtNome.setEditable(false);
             botAdicionarCliente.setVisible(false);
@@ -562,15 +572,16 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             subtotal += 3;
         }
 
-        if (radioCatupiry.isSelected()) {
-            Adicional adc = gerIG.getGerDominio().getAdicional(3);
-            adicional.add(adc);
-            subtotal += 3;
-        }
         if (radioCheddar.isSelected()) {
             Adicional adc = gerIG.getGerDominio().getAdicional(4);
             adicional.add(adc);
             subtotal += 4.5;
+        }
+
+        if (radioCatupiry.isSelected()) {
+            Adicional adc = gerIG.getGerDominio().getAdicional(3);
+            adicional.add(adc);
+            subtotal += 3;
         }
 
         if (chkCebola.isSelected()) {
@@ -653,7 +664,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         //Setando no campo de subtotal na interface gráfica
         txtTotal.setText(total);
-        System.out.println(tamanho);
         adicionarTabela(pizza, tamanho, adicional);
     }//GEN-LAST:event_botAdicionarActionPerformed
 
@@ -730,7 +740,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     int id = gerIG.getGerDominio().inserirCliente(nome, num, bairro, rua, tel);
                     JOptionPane.showMessageDialog(this, "Cliente " + id + " " + "( " + nome + " )" + " inserido com sucesso.", "Inserir Cliente", JOptionPane.INFORMATION_MESSAGE);
                     esconderCampos();
-                    botPesquisar.setVisible(false);
                     botLimpar.setVisible(false);
                     txtNome.setText(nome);
                     txtNome.setEditable(false);
@@ -788,9 +797,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             lblRua.setForeground(Color.red);
         }
 
-        try {
-            int num = Integer.parseInt(txtNumero.getText());
-        } catch (NumberFormatException erro) {
+        if (txtNumero.getText().equals("")) {
             msgErro = msgErro + "Número inválido.\n";
             lblNumero.setForeground(Color.red);
         }
@@ -851,6 +858,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableCarrinho;
     private javax.swing.JTextField jTextField5;
