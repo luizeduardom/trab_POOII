@@ -1,0 +1,1 @@
+insert into adicional (nomeAdicional, precoAdicional) values ('Maionese Caseira', 2), ('Molho Barbecue', 3), ('Borda Cheddar', 4.5), ('Borda Catupiry', 3), ('Cebola', 2), ('Mussarela', 6), ('Palmito', 2), ('Bacon', 4), ('Azeitona', 2), ('Orégano', 1), ('Presunto', 2), ('Lombo Canadense', 4), ('Alho Tostado', 1), ('Atum', 5), ('Ovo', 2);
