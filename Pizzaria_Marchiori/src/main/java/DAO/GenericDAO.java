@@ -1,7 +1,11 @@
 package DAO;
 
+import Dominio.Cliente;
 import java.util.List;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -44,6 +48,42 @@ public class GenericDAO {
             //OPERAÇÕES
             CriteriaQuery consulta = sessao.getCriteriaBuilder().createQuery(classe);
             consulta.from(classe);
+            lista = sessao.createQuery(consulta).getResultList();
+
+            sessao.getTransaction().commit();
+            sessao.close();
+        } catch (HibernateException erro) {
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+        }
+        return lista;
+    }
+
+    public List pesquisar(Class classe, String pesq) throws HibernateException {
+        Session sessao = null;
+        List lista = null;
+
+        try {
+            sessao = ConexaoHibernate.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            // Criando o construtor criteria e a consulta
+            CriteriaBuilder construtorCriteria = sessao.getCriteriaBuilder();
+            CriteriaQuery consulta = construtorCriteria.createQuery(Cliente.class);
+
+            // Tabela recebendo um root
+            Root tabela = consulta.from(Cliente.class);
+            
+            // Variavel criada para criar as restricoes(Where)
+            Predicate restricoes = null;
+            
+            // Definindo a minha clausula where
+            restricoes = construtorCriteria.like(tabela.get("nome"), pesq + "%");
+            
+            // Fazendo a consulta recebendo as restricoes
+            consulta.where(restricoes);
             lista = sessao.createQuery(consulta).getResultList();
 
             sessao.getTransaction().commit();

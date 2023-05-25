@@ -142,7 +142,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel3.add(txtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 235, 228, -1));
 
         try {
-            txtNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
+            txtNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("****")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }

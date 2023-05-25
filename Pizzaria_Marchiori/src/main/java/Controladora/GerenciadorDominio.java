@@ -32,6 +32,7 @@ public class GerenciadorDominio {
         return genDao.listar(classe);
 
     }
+    
 
     public int inserirCliente(String nome, int numero, String bairro, String rua, long telefone) throws HibernateException {
         Cliente cli = new Cliente(nome, numero, bairro, rua, telefone);

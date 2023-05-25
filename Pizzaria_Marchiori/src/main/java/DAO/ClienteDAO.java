@@ -16,7 +16,7 @@ import org.hibernate.HibernateException;
 public class ClienteDAO extends GenericDAO {
 
     public List<Cliente> pesquisarNome(String pesq) throws HibernateException {
-        return listar(Cliente.class);
+        return pesquisar(Cliente.class, pesq);
     }
 
 }
