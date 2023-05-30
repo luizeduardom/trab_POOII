@@ -24,7 +24,15 @@ public class Interface_Grafica {
     private JanelaCadPizza janPizza = null;
     private GerenciadorDominio gerDominio = null;
     private JanelaPesqCliente janPesqCliente = null;
-    protected String editarPizza;
+    protected Pizza obj;
+
+    public Pizza getObj() {
+        return obj;
+    }
+
+    public void setObj(Pizza obj) {
+        this.obj = obj;
+    }
 
     /**
      * @param args the command line arguments
@@ -64,13 +72,6 @@ public class Interface_Grafica {
         return gerDominio;
     }
 
-    public String getEditarPizza() {
-        return editarPizza;
-    }
-
-    public void setEditarPizza(String editarPizza) {
-        this.editarPizza = editarPizza;
-    }
 
     public Interface_Grafica() {
         try {

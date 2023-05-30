@@ -6,6 +6,8 @@
 package Janelas;
 
 import Controladora.Interface_Grafica;
+import Dominio.Pizza;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -33,32 +35,10 @@ public class JanelaCadPizza extends javax.swing.JDialog {
         labNomePizza1 = new javax.swing.JLabel();
         txtNomePizza = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        chkQueijo1 = new javax.swing.JCheckBox();
-        chkCalabresa1 = new javax.swing.JCheckBox();
-        chkPresunto1 = new javax.swing.JCheckBox();
-        chkFileMignon1 = new javax.swing.JCheckBox();
-        chkFrango1 = new javax.swing.JCheckBox();
-        chKCostelinha1 = new javax.swing.JCheckBox();
-        chkBacon1 = new javax.swing.JCheckBox();
-        chkOvo1 = new javax.swing.JCheckBox();
-        chkLombo1 = new javax.swing.JCheckBox();
-        ChkPeitoDePeru1 = new javax.swing.JCheckBox();
-        chkProvolone1 = new javax.swing.JCheckBox();
-        chkCatupiry1 = new javax.swing.JCheckBox();
-        chkCheddar1 = new javax.swing.JCheckBox();
-        chkCreamCheese1 = new javax.swing.JCheckBox();
-        chkGorgonzola1 = new javax.swing.JCheckBox();
-        chkParmesao1 = new javax.swing.JCheckBox();
-        chkCebola1 = new javax.swing.JCheckBox();
-        chkChampignon1 = new javax.swing.JCheckBox();
-        chkAlho1 = new javax.swing.JCheckBox();
-        chkMilho1 = new javax.swing.JCheckBox();
-        chkPalmito1 = new javax.swing.JCheckBox();
-        chkMolhoPesto1 = new javax.swing.JCheckBox();
-        chkDoritos1 = new javax.swing.JCheckBox();
-        chkCarne1 = new javax.swing.JCheckBox();
         botConfirmar1 = new javax.swing.JButton();
         botCancelar1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        list = new javax.swing.JList<>();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -81,83 +61,6 @@ public class JanelaCadPizza extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Ingredientes");
 
-        chkQueijo1.setBackground(new java.awt.Color(255, 255, 255));
-        chkQueijo1.setText("Queijo mussarela");
-
-        chkCalabresa1.setBackground(new java.awt.Color(255, 255, 255));
-        chkCalabresa1.setText("Calabresa");
-
-        chkPresunto1.setBackground(new java.awt.Color(255, 255, 255));
-        chkPresunto1.setText("Presunto");
-
-        chkFileMignon1.setBackground(new java.awt.Color(255, 255, 255));
-        chkFileMignon1.setText("Filé mignon em cubos");
-        chkFileMignon1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkFileMignon1ActionPerformed(evt);
-            }
-        });
-
-        chkFrango1.setBackground(new java.awt.Color(255, 255, 255));
-        chkFrango1.setText("Frango desfiado");
-
-        chKCostelinha1.setBackground(new java.awt.Color(255, 255, 255));
-        chKCostelinha1.setText("Costelinha desfiada");
-
-        chkBacon1.setBackground(new java.awt.Color(255, 255, 255));
-        chkBacon1.setText("Bacon artesanal em lascas");
-
-        chkOvo1.setBackground(new java.awt.Color(255, 255, 255));
-        chkOvo1.setText("Ovo");
-
-        chkLombo1.setBackground(new java.awt.Color(255, 255, 255));
-        chkLombo1.setText("Lombo canadense");
-
-        ChkPeitoDePeru1.setBackground(new java.awt.Color(255, 255, 255));
-        ChkPeitoDePeru1.setText("Peito de peru");
-
-        chkProvolone1.setBackground(new java.awt.Color(255, 255, 255));
-        chkProvolone1.setText("Provolone");
-
-        chkCatupiry1.setBackground(new java.awt.Color(255, 255, 255));
-        chkCatupiry1.setText("Catupiry");
-
-        chkCheddar1.setBackground(new java.awt.Color(255, 255, 255));
-        chkCheddar1.setText("Cheddar");
-
-        chkCreamCheese1.setBackground(new java.awt.Color(255, 255, 255));
-        chkCreamCheese1.setText("Cream Cheese");
-
-        chkGorgonzola1.setBackground(new java.awt.Color(255, 255, 255));
-        chkGorgonzola1.setText("Gorgonzola");
-
-        chkParmesao1.setBackground(new java.awt.Color(255, 255, 255));
-        chkParmesao1.setText("Parmesão Ralado");
-
-        chkCebola1.setBackground(new java.awt.Color(255, 255, 255));
-        chkCebola1.setText("Cebola");
-
-        chkChampignon1.setBackground(new java.awt.Color(255, 255, 255));
-        chkChampignon1.setText("Champignon");
-
-        chkAlho1.setBackground(new java.awt.Color(255, 255, 255));
-        chkAlho1.setText("Alho frito");
-
-        chkMilho1.setBackground(new java.awt.Color(255, 255, 255));
-        chkMilho1.setText("Milho");
-
-        chkPalmito1.setBackground(new java.awt.Color(255, 255, 255));
-        chkPalmito1.setText("Palmito");
-
-        chkMolhoPesto1.setBackground(new java.awt.Color(255, 255, 255));
-        chkMolhoPesto1.setText("Molho pesto");
-
-        chkDoritos1.setBackground(new java.awt.Color(255, 255, 255));
-        chkDoritos1.setText("Doritos");
-
-        chkCarne1.setBackground(new java.awt.Color(255, 255, 255));
-        chkCarne1.setText("Carne moída");
-
         botConfirmar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/botao-adicionar.png"))); // NOI18N
         botConfirmar1.setText("Confirmar");
         botConfirmar1.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +77,8 @@ public class JanelaCadPizza extends javax.swing.JDialog {
             }
         });
 
+        jScrollPane1.setViewportView(list);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -182,52 +87,21 @@ public class JanelaCadPizza extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkOvo1)
-                            .addComponent(chkCatupiry1)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(chkFrango1)
-                                    .addComponent(chkParmesao1)
-                                    .addComponent(chkFileMignon1)
-                                    .addComponent(chkChampignon1)
-                                    .addComponent(chkMolhoPesto1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkAlho1)
-                                            .addComponent(chkProvolone1)
-                                            .addComponent(chkCalabresa1)
-                                            .addComponent(chKCostelinha1)
-                                            .addComponent(ChkPeitoDePeru1)
-                                            .addComponent(chkCreamCheese1)
-                                            .addComponent(chkMilho1)
-                                            .addComponent(chkDoritos1))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkCarne1)
-                                            .addComponent(chkPalmito1)
-                                            .addComponent(chkCebola1)
-                                            .addComponent(chkBacon1)
-                                            .addComponent(chkLombo1)
-                                            .addComponent(chkPresunto1)
-                                            .addComponent(chkCheddar1)
-                                            .addComponent(chkGorgonzola1)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jLabel3))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(labNomePizza1)
-                                    .addComponent(chkQueijo1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNomePizza, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(labNomePizza1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNomePizza)
+                        .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(botCancelar1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botConfirmar1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(172, 172, 172))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(botCancelar1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                                .addComponent(botConfirmar1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -239,51 +113,13 @@ public class JanelaCadPizza extends javax.swing.JDialog {
                     .addComponent(txtNomePizza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addGap(14, 14, 14)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkQueijo1)
-                    .addComponent(chkCalabresa1)
-                    .addComponent(chkPresunto1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkFrango1)
-                    .addComponent(chKCostelinha1)
-                    .addComponent(chkLombo1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkOvo1)
-                    .addComponent(ChkPeitoDePeru1)
-                    .addComponent(chkCheddar1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkCatupiry1)
-                    .addComponent(chkCreamCheese1)
-                    .addComponent(chkGorgonzola1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkParmesao1)
-                    .addComponent(chkBacon1)
-                    .addComponent(chkProvolone1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkFileMignon1)
-                    .addComponent(chkCebola1)
-                    .addComponent(chkAlho1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkChampignon1)
-                    .addComponent(chkMilho1)
-                    .addComponent(chkPalmito1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkMolhoPesto1)
-                    .addComponent(chkDoritos1)
-                    .addComponent(chkCarne1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botConfirmar1)
-                    .addComponent(botCancelar1))
-                .addContainerGap())
+                    .addComponent(botCancelar1)
+                    .addComponent(botConfirmar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -300,10 +136,6 @@ public class JanelaCadPizza extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkFileMignon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFileMignon1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkFileMignon1ActionPerformed
-
     private void botConfirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botConfirmar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botConfirmar1ActionPerformed
@@ -317,41 +149,30 @@ public class JanelaCadPizza extends javax.swing.JDialog {
     }//GEN-LAST:event_jPanel2ComponentShown
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        String nomePizza = gerIG.getEditarPizza();
-        txtNomePizza.setText(nomePizza);
+        Pizza obj = gerIG.getObj();
+        txtNomePizza.setText(obj.getNomePizza());
+        int i = 0;
+        DefaultListModel model = new DefaultListModel();
+
+        for (i = 0; i < obj.getIngrediente().size(); i++) {
+            model.addElement(obj.getIngrediente().get(i));
+
+        }
+
+        list.setModel(model);
+        list.addSelectionInterval(0, i);
+        
     }//GEN-LAST:event_formComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox ChkPeitoDePeru1;
     private javax.swing.JButton botCancelar1;
     private javax.swing.JButton botConfirmar1;
-    private javax.swing.JCheckBox chKCostelinha1;
-    private javax.swing.JCheckBox chkAlho1;
-    private javax.swing.JCheckBox chkBacon1;
-    private javax.swing.JCheckBox chkCalabresa1;
-    private javax.swing.JCheckBox chkCarne1;
-    private javax.swing.JCheckBox chkCatupiry1;
-    private javax.swing.JCheckBox chkCebola1;
-    private javax.swing.JCheckBox chkChampignon1;
-    private javax.swing.JCheckBox chkCheddar1;
-    private javax.swing.JCheckBox chkCreamCheese1;
-    private javax.swing.JCheckBox chkDoritos1;
-    private javax.swing.JCheckBox chkFileMignon1;
-    private javax.swing.JCheckBox chkFrango1;
-    private javax.swing.JCheckBox chkGorgonzola1;
-    private javax.swing.JCheckBox chkLombo1;
-    private javax.swing.JCheckBox chkMilho1;
-    private javax.swing.JCheckBox chkMolhoPesto1;
-    private javax.swing.JCheckBox chkOvo1;
-    private javax.swing.JCheckBox chkPalmito1;
-    private javax.swing.JCheckBox chkParmesao1;
-    private javax.swing.JCheckBox chkPresunto1;
-    private javax.swing.JCheckBox chkProvolone1;
-    private javax.swing.JCheckBox chkQueijo1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labNomePizza1;
+    private javax.swing.JList<String> list;
     private javax.swing.JTextField txtNomePizza;
     // End of variables declaration//GEN-END:variables
 }

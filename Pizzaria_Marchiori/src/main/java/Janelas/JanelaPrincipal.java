@@ -543,7 +543,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botPesquisarActionPerformed
 
     private void botEditarPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEditarPizzaActionPerformed
-        gerIG.setEditarPizza(cmbPizzas.getSelectedItem().toString());
+        Pizza obj = (Pizza) (cmbPizzas.getSelectedItem());
+        gerIG.setObj(obj);
         gerIG.janelaCadPizza();
     }//GEN-LAST:event_botEditarPizzaActionPerformed
 

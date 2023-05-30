@@ -56,67 +56,29 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="chkOvo1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="chkCatupiry1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="chkFrango1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="chkParmesao1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="chkFileMignon1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="chkChampignon1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="chkMolhoPesto1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="chkAlho1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkProvolone1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkCalabresa1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chKCostelinha1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="ChkPeitoDePeru1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkCreamCheese1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkMilho1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkDoritos1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="chkCarne1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkPalmito1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkCebola1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkBacon1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkLombo1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkPresunto1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkCheddar1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chkGorgonzola1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="labNomePizza1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="chkQueijo1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtNomePizza" min="-2" pref="230" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="labNomePizza1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtNomePizza" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="botCancelar1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="botConfirmar1" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="botCancelar1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="124" max="32767" attributes="0"/>
+                                  <Component id="botConfirmar1" min="-2" pref="120" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -133,60 +95,14 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="193" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkQueijo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkCalabresa1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkPresunto1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkFrango1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chKCostelinha1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkLombo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkOvo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ChkPeitoDePeru1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkCheddar1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkCatupiry1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkCreamCheese1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkGorgonzola1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkParmesao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkBacon1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkProvolone1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkFileMignon1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkCebola1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkAlho1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkChampignon1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkMilho1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkPalmito1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkMolhoPesto1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkDoritos1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkCarne1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="botConfirmar1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botCancelar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botConfirmar1" alignment="3" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -208,201 +124,6 @@
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ingredientes"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkQueijo1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Queijo mussarela"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkCalabresa1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Calabresa"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkPresunto1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Presunto"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkFileMignon1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Fil&#xe9; mignon em cubos"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkFileMignon1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkFrango1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Frango desfiado"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chKCostelinha1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Costelinha desfiada"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkBacon1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Bacon artesanal em lascas"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkOvo1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Ovo"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkLombo1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Lombo canadense"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="ChkPeitoDePeru1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Peito de peru"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkProvolone1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Provolone"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkCatupiry1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Catupiry"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkCheddar1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cheddar"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkCreamCheese1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cream Cheese"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkGorgonzola1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Gorgonzola"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkParmesao1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Parmes&#xe3;o Ralado"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkCebola1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cebola"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkChampignon1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Champignon"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkAlho1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Alho frito"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkMilho1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Milho"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkPalmito1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Palmito"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkMolhoPesto1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Molho pesto"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkDoritos1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Doritos"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkCarne1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Carne mo&#xed;da"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="botConfirmar1">
@@ -427,6 +148,25 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCancelar1ActionPerformed"/>
           </Events>
         </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JList" name="list">
+              <Properties>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
