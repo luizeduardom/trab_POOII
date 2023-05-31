@@ -72,7 +72,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        bordaPadrao = new javax.swing.JRadioButton();
         radioCheddar = new javax.swing.JRadioButton();
         radioCatupiry = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
@@ -240,11 +240,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Bordas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        grupoBorda.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Borda Padrão");
-        jPanel5.add(jRadioButton1);
+        bordaPadrao.setBackground(new java.awt.Color(255, 255, 255));
+        grupoBorda.add(bordaPadrao);
+        bordaPadrao.setSelected(true);
+        bordaPadrao.setText("Borda Padrão");
+        jPanel5.add(bordaPadrao);
 
         radioCheddar.setBackground(new java.awt.Color(255, 255, 255));
         grupoBorda.add(radioCheddar);
@@ -696,7 +696,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             idPedido = gerIG.getGerDominio().inserirPedido(cliSelecionado, entregar, subtotal, jTableCarrinho);
             JOptionPane.showMessageDialog(this, "Pedido " + idPedido + " inserido com sucesso.");
             JOptionPane.showMessageDialog(this, "Logo mais sua pizza estará prontinha para você! ");
-            gerIG.encerrarPrograma(this);
+            limparPedido();
 
         } else {
             JOptionPane.showMessageDialog(this, "Selecione um cliente.");
@@ -777,6 +777,22 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         txtTelefone.setVisible(false);
         lblTelefone.setVisible(false);
     }
+    
+    private void mostrarCampos(){
+        txtNumero.setVisible(true);
+        botLimpar.setVisible(true);
+        botPesquisar.setVisible(true);
+        botAdicionarCliente.setVisible(true);
+        lblNumero.setVisible(true);
+        txtBairro.setVisible(true);
+        lblBairro.setVisible(true);
+        txtRua.setVisible(true);
+        lblRua.setVisible(true);
+        txtTelefone.setVisible(true);
+        lblTelefone.setVisible(true);
+        txtNome.setEditable(true);
+        
+    }
 
     private boolean validarCampos() {
 
@@ -825,9 +841,42 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             return false;
         }
     }
+    
+    private void limparPedido() {
+        
+        cliSelecionado = null;
+        mostrarCampos();
+        txtNome.setText("");
+        txtBairro.setText("");
+        txtRua.setText("");
+        txtNumero.setText("");
+        txtTelefone.setText("");
+        bordaPadrao.setSelected(true);
+        chkCebola.setSelected(false);
+        chkMussarela.setSelected(false);
+        chkPalmito.setSelected(false);
+        chkBacon.setSelected(false);
+        chkAzeitona.setSelected(false);
+        chkOregano.setSelected(false);
+        chkPresunto.setSelected(false);
+        chkLombo.setSelected(false);
+        chkAlho.setSelected(false);
+        chkAtum.setSelected(false);
+        chkOvo.setSelected(false);
+        chkBarbecue.setSelected(false);
+        chkMaionese.setSelected(false);
+        txtTotal.setText("");
+          
+        
+        // ZERAR a TABELA
+        ( (DefaultTableModel) jTableCarrinho.getModel() ).setRowCount(0);
+        
+        
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton bordaPadrao;
     private javax.swing.JButton botAdicionar;
     private javax.swing.JButton botAdicionarCliente;
     private javax.swing.JButton botEditarPizza;
@@ -863,7 +912,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableCarrinho;
     private javax.swing.JTextField jTextField5;

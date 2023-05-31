@@ -44,7 +44,7 @@ public class ItensPedido implements Serializable {
         this.tamanho = tamanho;
     }
 
-    public ItensPedido(Pizza pizza, Pedido pedido, char tamanho, List adicionais) {
+    public ItensPedido(Pizza pizza, Pedido pedido, char tamanho, List<Adicional> adicionais) {
         this.pedido = pedido;
         this.pizza = pizza;
         this.tamanho = tamanho;

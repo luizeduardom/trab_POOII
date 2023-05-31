@@ -63,7 +63,7 @@ public class GerenciadorDominio {
 
     public int inserirPedido(Cliente cli, int entrega, double total, JTable tblPedidos) {
         Pedido pedido = new Pedido(cli, entrega, total);
-        List itens = pedido.getItenspedido();
+        List<ItensPedido> itens = pedido.getItenspedido();
 
         int tam = tblPedidos.getRowCount();
         if (tam > 0) {
@@ -71,7 +71,7 @@ public class GerenciadorDominio {
                 int col = 0;
                 Pizza pizza = (Pizza) tblPedidos.getValueAt(lin, col++);
                 char tamanho = (char) tblPedidos.getValueAt(lin, col++);
-                List adicionais = (List) tblPedidos.getValueAt(lin, col++);
+                List<Adicional> adicionais = (List<Adicional>) tblPedidos.getValueAt(lin, col++);
                 ItensPedido item = new ItensPedido(pizza, pedido, tamanho, adicionais);
 
                 itens.add(item);
