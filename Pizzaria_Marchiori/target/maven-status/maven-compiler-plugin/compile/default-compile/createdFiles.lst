@@ -4,9 +4,9 @@ Janelas\JanelaPesqCliente$3.class
 Janelas\JanelaPrincipal$11.class
 Janelas\JanelaCadPizza$2.class
 Janelas\JanelaPesqCliente$6.class
-dao\ClienteDAO.class
 Janelas\JanelaCadPizza.class
 Janelas\JanelaPrincipal$5.class
+DAO\ConexaoHibernate.class
 Janelas\JanelaPesqCliente$2.class
 Dominio\Adicional.class
 Controladora\Interface_Grafica.class
@@ -18,6 +18,7 @@ Dominio\Pizza.class
 Janelas\JanelaPesqCliente$5.class
 Janelas\JanelaPrincipal$1.class
 Janelas\JanelaCadPizza$1.class
+DAO\ClienteDAO.class
 Janelas\JanelaPrincipal$12.class
 Janelas\JanelaPrincipal.class
 Janelas\JanelaPrincipal$13.class
@@ -25,9 +26,8 @@ Janelas\JanelaPesqCliente$1.class
 Janelas\JanelaPrincipal$4.class
 Janelas\JanelaCadPizza$3.class
 Janelas\JanelaPrincipal$7.class
-dao\GenericDAO.class
 Janelas\JanelaPrincipal$3.class
-dao\ConexaoHibernate.class
+DAO\GenericDAO.class
 Janelas\JanelaPesqCliente$4.class
 Dominio\ItensPedido.class
 Janelas\JanelaPrincipal$10.class

@@ -39,6 +39,7 @@ public class GerenciadorDominio {
         genDao.inserir(cli);
         return cli.getIdCliente();
     }
+    
 
     public List<Cliente> pesquisarCliente(String pesq) throws HibernateException {
         List<Cliente> lista = null;
@@ -71,9 +72,9 @@ public class GerenciadorDominio {
                 int col = 0;
                 Pizza pizza = (Pizza) tblPedidos.getValueAt(lin, col++);
                 char tamanho = (char) tblPedidos.getValueAt(lin, col++);
+                col++;
                 List<Adicional> adicionais = (List<Adicional>) tblPedidos.getValueAt(lin, col++);
                 ItensPedido item = new ItensPedido(pizza, pedido, tamanho, adicionais);
-
                 itens.add(item);
             }
             genDao.inserir(pedido);

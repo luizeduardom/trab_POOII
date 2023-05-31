@@ -35,7 +35,7 @@ public class ItensPedido implements Serializable {
     private List<Adicional> adicional = new ArrayList<>();
 
 
- /*|-------------------| relacionamentos |-------------------|*/
+    /*|-------------------| relacionamentos |-------------------|*/
  /*|-------------------| construtor |-------------------|*/
     public ItensPedido(int idItensPedido, Pedido pedido, Pizza pizza, char tamanho) {
         this.idItensPedido = idItensPedido;
@@ -92,4 +92,11 @@ public class ItensPedido implements Serializable {
         this.idItensPedido = idItensPedido;
     }
     /*|-------------------| getters & setters |-------------------|*/
+
+    @Override
+    public String toString() {
+        return "ItensPedido {" + "idItemPedido=" + idItensPedido + ", Pedido=" + pedido + ", Pizza=" + pizza + ", Tamanho=" + tamanho + ", Adicionais=" + adicional + '}';
+    }
+
+    
 }

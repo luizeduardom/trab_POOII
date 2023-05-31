@@ -24,7 +24,7 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
     
-    @OneToMany (mappedBy = "pedido", fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "pedido", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ItensPedido> itenspedido = new ArrayList<>();
     
     /*|-------------------| relacionamentos |-------------------|*/

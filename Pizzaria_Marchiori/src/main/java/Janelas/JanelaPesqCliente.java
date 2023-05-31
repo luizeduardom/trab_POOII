@@ -43,7 +43,9 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu2 = new javax.swing.JPopupMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuPedidos = new javax.swing.JMenuItem();
+        menuAlterar = new javax.swing.JMenuItem();
+        menuExcluir = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -52,19 +54,33 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         botSelecionar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        botExcluir = new javax.swing.JButton();
-        botAlterar = new javax.swing.JButton();
 
-        jMenuItem1.setText("Ver Pedidos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/pizza.png"))); // NOI18N
+        menuPedidos.setText("Ver Pedidos");
+        menuPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuPedidosActionPerformed(evt);
             }
         });
-        jPopupMenu2.add(jMenuItem1);
+        jPopupMenu2.add(menuPedidos);
+
+        menuAlterar.setBackground(new java.awt.Color(102, 255, 255));
+        menuAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/conjunto-de-setas-de-sincronizacao.png"))); // NOI18N
+        menuAlterar.setText("Alterar Cliente");
+        jPopupMenu2.add(menuAlterar);
+
+        menuExcluir.setBackground(new java.awt.Color(255, 51, 51));
+        menuExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/excluir.png"))); // NOI18N
+        menuExcluir.setText("Excluir Cliente");
+        jPopupMenu2.add(menuExcluir);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Cliente");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
@@ -113,19 +129,6 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         jTable1.setComponentPopupMenu(jPopupMenu2);
         jScrollPane1.setViewportView(jTable1);
 
-        botExcluir.setBackground(new java.awt.Color(255, 51, 51));
-        botExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/excluir.png"))); // NOI18N
-        botExcluir.setText("Excluir");
-        botExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botExcluirActionPerformed(evt);
-            }
-        });
-
-        botAlterar.setBackground(new java.awt.Color(102, 255, 255));
-        botAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/conjunto-de-setas-de-sincronizacao.png"))); // NOI18N
-        botAlterar.setText("Alterar");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -141,11 +144,7 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
                         .addComponent(botPesquisar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(botSair, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(279, 279, 279)
-                        .addComponent(botExcluir)
-                        .addGap(18, 18, 18)
+                        .addGap(490, 490, 490)
                         .addComponent(botSelecionar)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -163,8 +162,6 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botSelecionar)
-                    .addComponent(botExcluir)
-                    .addComponent(botAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botSair))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -186,10 +183,6 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
     public Cliente getCliente() {
         return cliSelecionado;
     }
-
-    private void botExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botExcluirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botExcluirActionPerformed
 
     private void botSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botSairActionPerformed
         gerIG.janelaCadPizzaFechar(this);
@@ -223,7 +216,7 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_botSelecionarActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosActionPerformed
         int linha = jTable1.getSelectedRow();
         if ( linha >= 0 ) {
             cliSelecionado = (Cliente) jTable1.getValueAt(linha, 0);
@@ -242,21 +235,38 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         else {
             JOptionPane.showMessageDialog(this,"Selecione uma linha.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE  );
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuPedidosActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+         try {
+            List<Cliente> lista = gerIG.getGerDominio().pesquisarCliente("");
+
+            // APAGA as linhas da tabela
+            ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
+
+            for (Cliente cli : lista) {
+                // ADICIONAR LINHA NA TABELA        
+                ((DefaultTableModel) jTable1.getModel()).addRow(cli.toArray());
+            }
+
+        } catch (HibernateException | ParseException ex) {
+            JOptionPane.showMessageDialog(this, ex, "ERRO ao PESQUISAR Cliente", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_formComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botAlterar;
-    private javax.swing.JButton botExcluir;
     private javax.swing.JButton botPesquisar;
     private javax.swing.JButton botSair;
     private javax.swing.JButton botSelecionar;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JMenuItem menuAlterar;
+    private javax.swing.JMenuItem menuExcluir;
+    private javax.swing.JMenuItem menuPedidos;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

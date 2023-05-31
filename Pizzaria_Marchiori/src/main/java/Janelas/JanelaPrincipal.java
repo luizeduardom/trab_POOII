@@ -234,7 +234,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioGrande)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -285,24 +285,25 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cmbPizzas, 0, 208, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addContainerGap(236, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botEditarPizza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botEditarPizza, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cmbPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(cmbPizzas)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(botEditarPizza)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                .addContainerGap()
+                .addComponent(botEditarPizza)
+                .addGap(7, 7, 7)
+                .addComponent(cmbPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
                 .addGap(22, 22, 22))
         );
 
@@ -339,7 +340,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel7.add(chkPresunto);
 
         chkLombo.setBackground(new java.awt.Color(255, 255, 255));
-        chkLombo.setText("Lombo canadense (4,00)");
+        chkLombo.setText("Lombo Canadense (4,00)");
         jPanel7.add(chkLombo);
 
         chkAlho.setBackground(new java.awt.Color(255, 255, 255));
@@ -498,12 +499,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(botAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -682,21 +683,24 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     }
     private void botEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEncerrarActionPerformed
-        if ((JOptionPane.showConfirmDialog(null, "Deseja que seja entregue seu pedido? (Adicional de 2,00)", "Entrega Pedido", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0)) {
-            entregar = 1;
-            subtotal += 2;
-            String total = String.valueOf(subtotal);
-            txtTotal.setText(total);
-        }
 
         if (cliSelecionado != null) {
 
             int idPedido;
 
+            if ((JOptionPane.showConfirmDialog(null, "Deseja que seja entregue seu pedido? (Adicional de 2,00)", "Entrega Pedido", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0)) {
+                entregar = 1;
+                subtotal += 2;
+                String total = String.valueOf(subtotal);
+                txtTotal.setText(total);
+                
+            }
+
             idPedido = gerIG.getGerDominio().inserirPedido(cliSelecionado, entregar, subtotal, jTableCarrinho);
             JOptionPane.showMessageDialog(this, "Pedido " + idPedido + " inserido com sucesso.");
             JOptionPane.showMessageDialog(this, "Logo mais sua pizza estará prontinha para você! ");
             limparPedido();
+            subtotal = 0;
 
         } else {
             JOptionPane.showMessageDialog(this, "Selecione um cliente.");
@@ -777,8 +781,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         txtTelefone.setVisible(false);
         lblTelefone.setVisible(false);
     }
-    
-    private void mostrarCampos(){
+
+    private void mostrarCampos() {
         txtNumero.setVisible(true);
         botLimpar.setVisible(true);
         botPesquisar.setVisible(true);
@@ -791,7 +795,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         txtTelefone.setVisible(true);
         lblTelefone.setVisible(true);
         txtNome.setEditable(true);
-        
+
     }
 
     private boolean validarCampos() {
@@ -841,9 +845,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             return false;
         }
     }
-    
+
     private void limparPedido() {
-        
+
         cliSelecionado = null;
         mostrarCampos();
         txtNome.setText("");
@@ -866,12 +870,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         chkBarbecue.setSelected(false);
         chkMaionese.setSelected(false);
         txtTotal.setText("");
-          
-        
+
         // ZERAR a TABELA
-        ( (DefaultTableModel) jTableCarrinho.getModel() ).setRowCount(0);
-        
-        
+        ((DefaultTableModel) jTableCarrinho.getModel()).setRowCount(0);
+
     }
 
 

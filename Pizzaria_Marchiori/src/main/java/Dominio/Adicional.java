@@ -23,9 +23,6 @@ public class Adicional implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "idItensPedido"))
     private List<ItensPedido> itenspedido = new ArrayList<>();
 
-    /*@OneToMany (mappedBy = "idAdicional" , fetch = FetchType.LAZY)
-    private ItensPedido itenspedido;*/
-
  /*|-------------------| relacionamentos |-------------------|*/
     @Column(name = "nomeAdicional", nullable = false)
     private String nome;
@@ -33,13 +30,14 @@ public class Adicional implements Serializable {
     @Column(name = "precoAdicional", nullable = false)
     private float preco;
 
-    public Adicional() {
-    }
+    
 
     
     
     
     /*|-------------------| construtor |-------------------|*/
+    
+    
     public Adicional(int idAdicional, String nome, float preco) {
         this.idAdicional = idAdicional;
         this.nome = nome;
@@ -49,6 +47,9 @@ public class Adicional implements Serializable {
     public Adicional(String nome, float preco) {
         this.nome = nome;
         this.preco = preco;
+    }
+
+    public Adicional() {
     }
     
     
