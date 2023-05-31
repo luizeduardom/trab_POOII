@@ -57,13 +57,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         lblNumero = new javax.swing.JLabel();
         lblTelefone = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JFormattedTextField();
-        txtNumero = new javax.swing.JFormattedTextField();
         txtRua = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         botPesquisar = new javax.swing.JButton();
         botAdicionarCliente = new javax.swing.JButton();
         botLimpar = new javax.swing.JButton();
+        txtNumero = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         radioPequena = new javax.swing.JRadioButton();
         radioMedia = new javax.swing.JRadioButton();
@@ -140,13 +140,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jPanel3.add(txtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 235, 228, -1));
-
-        try {
-            txtNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("****")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jPanel3.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 204, 228, -1));
         jPanel3.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 173, 228, -1));
         jPanel3.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 142, 228, -1));
         jPanel3.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 111, 228, -1));
@@ -175,6 +168,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
         jPanel3.add(botLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 45));
+
+        txtNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 230, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tamanho", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -763,6 +763,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_chkMaioneseActionPerformed
 
+    private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroActionPerformed
+
     private void esconderCampos() {
         txtNumero.setVisible(false);
         lblNumero.setVisible(false);
@@ -877,7 +881,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioPequena;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JFormattedTextField txtNumero;
+    private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtRua;
     private javax.swing.JFormattedTextField txtTelefone;
     private javax.swing.JTextField txtTotal;

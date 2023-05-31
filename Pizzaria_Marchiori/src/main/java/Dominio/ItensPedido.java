@@ -34,9 +34,6 @@ public class ItensPedido implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "idAdicional"))
     private List<Adicional> adicional = new ArrayList<>();
 
-    /*@ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn (name = "idAdicional")
-    private List<Adicional> adicional;*/
 
  /*|-------------------| relacionamentos |-------------------|*/
  /*|-------------------| construtor |-------------------|*/
@@ -47,7 +44,7 @@ public class ItensPedido implements Serializable {
         this.tamanho = tamanho;
     }
 
-    public ItensPedido(Pedido pedido, Pizza pizza, char tamanho, List adicionais) {
+    public ItensPedido(Pizza pizza, Pedido pedido, char tamanho, List adicionais) {
         this.pedido = pedido;
         this.pizza = pizza;
         this.tamanho = tamanho;

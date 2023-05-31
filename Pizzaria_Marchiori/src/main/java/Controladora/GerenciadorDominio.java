@@ -72,7 +72,7 @@ public class GerenciadorDominio {
                 Pizza pizza = (Pizza) tblPedidos.getValueAt(lin, col++);
                 char tamanho = (char) tblPedidos.getValueAt(lin, col++);
                 List adicionais = (List) tblPedidos.getValueAt(lin, col++);
-                ItensPedido item = new ItensPedido(pedido, pizza, tamanho, adicionais);
+                ItensPedido item = new ItensPedido(pizza, pedido, tamanho, adicionais);
 
                 itens.add(item);
             }
@@ -82,6 +82,10 @@ public class GerenciadorDominio {
             return -1;
         }
 
+    }
+    
+        public void carregarPedidos(Cliente cli) {
+        cliDao.carregarPedidos(cli);
     }
 
 }

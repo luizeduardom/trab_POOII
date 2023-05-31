@@ -7,6 +7,7 @@ package Janelas;
 
 import Controladora.Interface_Grafica;
 import Dominio.Cliente;
+import Dominio.Pedido;
 import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
@@ -41,6 +42,8 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -51,6 +54,14 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         botExcluir = new javax.swing.JButton();
         botAlterar = new javax.swing.JButton();
+
+        jMenuItem1.setText("Ver Pedidos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu2.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Cliente");
@@ -99,6 +110,7 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setComponentPopupMenu(jPopupMenu2);
         jScrollPane1.setViewportView(jTable1);
 
         botExcluir.setBackground(new java.awt.Color(255, 51, 51));
@@ -211,6 +223,27 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_botSelecionarActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        int linha = jTable1.getSelectedRow();
+        if ( linha >= 0 ) {
+            cliSelecionado = (Cliente) jTable1.getValueAt(linha, 0);
+            
+            gerIG.getGerDominio().carregarPedidos(cliSelecionado);
+            
+            List<Pedido> pedidos = cliSelecionado.getPedido();
+            for (Pedido ped : pedidos ) {
+                // Mostrar
+                JOptionPane.showMessageDialog(rootPane, "ID do Pedido: " + ped.getIdPedido() + " - " 
+                        + "Itens do Pedido: " + ped.getItenspedido()+ " - " 
+                         + "Valor Total: " + ped.getValorTotal());
+            }
+            
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"Selecione uma linha.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE  );
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botAlterar;
@@ -218,7 +251,9 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
     private javax.swing.JButton botPesquisar;
     private javax.swing.JButton botSair;
     private javax.swing.JButton botSelecionar;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblNome;
