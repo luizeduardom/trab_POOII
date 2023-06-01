@@ -533,7 +533,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="236" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="botEditarPizza" alignment="0" pref="127" max="32767" attributes="0"/>
+                          <Component id="botEditarPizza" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -565,7 +565,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/intergraf/imagens/selecione.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Editar Pizza"/>
+                <Property name="text" type="java.lang.String" value="Adicionar Observacao"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botEditarPizzaActionPerformed"/>
@@ -806,11 +806,12 @@
             <Component class="javax.swing.JTable" name="jTableCarrinho">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="0">
+                  <Table columnCount="5" rowCount="0">
                     <Column editable="false" title="Pizza" type="java.lang.Object"/>
                     <Column editable="false" title="Tamanho" type="java.lang.Object"/>
                     <Column editable="false" title="Ingredientes" type="java.lang.Object"/>
                     <Column editable="false" title="Adicionais" type="java.lang.Object"/>
+                    <Column editable="false" title="Observacao" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="autoResizeMode" type="int" value="4"/>

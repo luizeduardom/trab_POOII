@@ -265,7 +265,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Pizzas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         botEditarPizza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/selecione.png"))); // NOI18N
-        botEditarPizza.setText("Editar Pizza");
+        botEditarPizza.setText("Adicionar Observacao");
         botEditarPizza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botEditarPizzaActionPerformed(evt);
@@ -287,7 +287,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(236, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botEditarPizza, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                    .addComponent(botEditarPizza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -411,11 +411,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Pizza", "Tamanho", "Ingredientes", "Adicionais"
+                "Pizza", "Tamanho", "Ingredientes", "Adicionais", "Observacao"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -680,6 +680,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jTableCarrinho.setValueAt(tamanho, linha, coluna++);
         jTableCarrinho.setValueAt(pizza.getIngrediente(), linha, coluna++);
         jTableCarrinho.setValueAt(adicional, linha, coluna++);
+        jTableCarrinho.setValueAt(gerIG.getObservacao(), linha, coluna++);
 
     }
     private void botEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEncerrarActionPerformed
@@ -696,7 +697,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 
             }
 
-            idPedido = gerIG.getGerDominio().inserirPedido(cliSelecionado, entregar, subtotal, jTableCarrinho);
+            idPedido = gerIG.getGerDominio().inserirPedido(cliSelecionado, entregar, subtotal, jTableCarrinho, gerIG.getObservacao());
             JOptionPane.showMessageDialog(this, "Pedido " + idPedido + " inserido com sucesso.");
             JOptionPane.showMessageDialog(this, "Logo mais sua pizza estará prontinha para você! ");
             limparPedido();

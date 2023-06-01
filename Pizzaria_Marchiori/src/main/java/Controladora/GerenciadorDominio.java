@@ -62,8 +62,8 @@ public class GerenciadorDominio {
         return (Cliente) genDao.load(Cliente.class, id);
     }
 
-    public int inserirPedido(Cliente cli, int entrega, double total, JTable tblPedidos) {
-        Pedido pedido = new Pedido(cli, entrega, total);
+    public int inserirPedido(Cliente cli, int entrega, double total, JTable tblPedidos, String observacao) {
+        Pedido pedido = new Pedido(cli, entrega, total, observacao);
         List<ItensPedido> itens = pedido.getItenspedido();
 
         int tam = tblPedidos.getRowCount();

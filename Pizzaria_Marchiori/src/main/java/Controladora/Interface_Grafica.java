@@ -25,14 +25,9 @@ public class Interface_Grafica {
     private GerenciadorDominio gerDominio = null;
     private JanelaPesqCliente janPesqCliente = null;
     protected Pizza obj;
+    protected String observacao;
 
-    public Pizza getObj() {
-        return obj;
-    }
-
-    public void setObj(Pizza obj) {
-        this.obj = obj;
-    }
+    
 
     /**
      * @param args the command line arguments
@@ -129,5 +124,22 @@ public class Interface_Grafica {
             throw new HibernateException(ex);
         }
 
+    }
+    
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+    
+
+    public Pizza getObj() {
+        return obj;
+    }
+
+    public void setObj(Pizza obj) {
+        this.obj = obj;
     }
 }

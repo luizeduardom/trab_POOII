@@ -6,8 +6,6 @@
 package Janelas;
 
 import Controladora.Interface_Grafica;
-import Dominio.Pizza;
-import javax.swing.DefaultListModel;
 
 /**
  *
@@ -37,8 +35,7 @@ public class JanelaCadPizza extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         botConfirmar1 = new javax.swing.JButton();
         botCancelar1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        list = new javax.swing.JList<>();
+        txtObs = new javax.swing.JTextField();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -59,7 +56,7 @@ public class JanelaCadPizza extends javax.swing.JDialog {
         txtNomePizza.setEditable(false);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Ingredientes");
+        jLabel3.setText("Observação");
 
         botConfirmar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/botao-adicionar.png"))); // NOI18N
         botConfirmar1.setText("Confirmar");
@@ -77,7 +74,11 @@ public class JanelaCadPizza extends javax.swing.JDialog {
             }
         });
 
-        jScrollPane1.setViewportView(list);
+        txtObs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtObsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -86,6 +87,9 @@ public class JanelaCadPizza extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtObs)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(labNomePizza1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -96,12 +100,9 @@ public class JanelaCadPizza extends javax.swing.JDialog {
                         .addComponent(jLabel3)
                         .addGap(172, 172, 172))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(botCancelar1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                                .addComponent(botConfirmar1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botCancelar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                        .addComponent(botConfirmar1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -113,9 +114,9 @@ public class JanelaCadPizza extends javax.swing.JDialog {
                     .addComponent(txtNomePizza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtObs, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botCancelar1)
                     .addComponent(botConfirmar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -137,7 +138,10 @@ public class JanelaCadPizza extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botConfirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botConfirmar1ActionPerformed
-        // TODO add your handling code here:
+
+        String observacao = txtObs.getText();
+        gerIG.setObservacao(observacao);
+        gerIG.janelaCadPizzaFechar(this);
     }//GEN-LAST:event_botConfirmar1ActionPerformed
 
     private void botCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCancelar1ActionPerformed
@@ -149,20 +153,12 @@ public class JanelaCadPizza extends javax.swing.JDialog {
     }//GEN-LAST:event_jPanel2ComponentShown
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        Pizza obj = gerIG.getObj();
-        txtNomePizza.setText(obj.getNomePizza());
-        int i = 0;
-        DefaultListModel model = new DefaultListModel();
-
-        for (i = 0; i < obj.getIngrediente().size(); i++) {
-            model.addElement(obj.getIngrediente().get(i));
-
-        }
-
-        list.setModel(model);
-        list.addSelectionInterval(0, i);
-        
+        txtNomePizza.setText(gerIG.getObj().getNomePizza());
     }//GEN-LAST:event_formComponentShown
+
+    private void txtObsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtObsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtObsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -170,9 +166,8 @@ public class JanelaCadPizza extends javax.swing.JDialog {
     private javax.swing.JButton botConfirmar1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labNomePizza1;
-    private javax.swing.JList<String> list;
     private javax.swing.JTextField txtNomePizza;
+    private javax.swing.JTextField txtObs;
     // End of variables declaration//GEN-END:variables
 }
