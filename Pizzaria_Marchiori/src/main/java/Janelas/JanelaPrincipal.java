@@ -61,9 +61,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         txtBairro = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         botPesquisar = new javax.swing.JButton();
-        botAdicionarCliente = new javax.swing.JButton();
-        botLimpar = new javax.swing.JButton();
+        botAlterar = new javax.swing.JButton();
         txtNumero = new javax.swing.JTextField();
+        botLimpar = new javax.swing.JButton();
+        botAdicionarCliente1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         radioPequena = new javax.swing.JRadioButton();
         radioMedia = new javax.swing.JRadioButton();
@@ -153,13 +154,21 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         jPanel3.add(botPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 136, -1));
 
-        botAdicionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/verifica.png"))); // NOI18N
-        botAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
+        botAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/conjunto-de-setas-de-sincronizacao.png"))); // NOI18N
+        botAlterar.setText("Alterar");
+        botAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botAdicionarClienteActionPerformed(evt);
+                botAlterarActionPerformed(evt);
             }
         });
-        jPanel3.add(botAdicionarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, 45));
+        jPanel3.add(botAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, 45));
+
+        txtNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 230, -1));
 
         botLimpar.setText("Limpar");
         botLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -169,12 +178,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         jPanel3.add(botLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 45));
 
-        txtNumero.addActionListener(new java.awt.event.ActionListener() {
+        botAdicionarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/verifica.png"))); // NOI18N
+        botAdicionarCliente1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroActionPerformed(evt);
+                botAdicionarCliente1ActionPerformed(evt);
             }
         });
-        jPanel3.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 230, -1));
+        jPanel3.add(botAdicionarCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, 45));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tamanho", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -537,9 +547,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         if (cliSelecionado != null) {
             txtNome.setText(cliSelecionado.getNome());
             esconderCampos();
-            botLimpar.setVisible(false);
+            botAlterar.setVisible(false);
             txtNome.setEditable(false);
-            botAdicionarCliente.setVisible(false);
+            botLimpar.setVisible(false);
+            botAlterar.setVisible(false);
+            botAlterar.setVisible(true);
         }
     }//GEN-LAST:event_botPesquisarActionPerformed
 
@@ -694,7 +706,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 subtotal += 2;
                 String total = String.valueOf(subtotal);
                 txtTotal.setText(total);
-                
+
             }
 
             idPedido = gerIG.getGerDominio().inserirPedido(cliSelecionado, entregar, subtotal, jTableCarrinho, gerIG.getObservacao());
@@ -712,6 +724,39 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         gerIG.encerrarPrograma(this);
     }//GEN-LAST:event_botSairActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        gerIG.carregarCombo(cmbPizzas, Pizza.class);
+        botAlterar.setVisible(false);
+    }//GEN-LAST:event_formComponentShown
+
+    private void botAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAlterarActionPerformed
+        if (cliSelecionado != null) {
+            mostrarCampos();
+            botPesquisar.setVisible(false);
+            botAdicionarCliente1.setVisible(true);
+            botAlterar.setVisible(false);
+            botLimpar.setVisible(true);
+            txtBairro.setText(cliSelecionado.getBairro());
+            txtRua.setText(cliSelecionado.getRua());
+            String numero_convertido = String.valueOf(cliSelecionado.getNumero());
+            txtNumero.setText(numero_convertido);
+            String telefone_convertido = String.valueOf(cliSelecionado.getTelefone());
+            txtTelefone.setText(telefone_convertido);
+        }      
+    }//GEN-LAST:event_botAlterarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        gerIG.carregarCombo(cmbPizzas, Pizza.class);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void chkMaioneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMaioneseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkMaioneseActionPerformed
+
+    private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroActionPerformed
+
     private void botLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botLimparActionPerformed
         txtNome.setText("");
         txtBairro.setText("");
@@ -720,12 +765,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         txtTelefone.setText("");
     }//GEN-LAST:event_botLimparActionPerformed
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        gerIG.carregarCombo(cmbPizzas, Pizza.class);
-    }//GEN-LAST:event_formComponentShown
-
-    private void botAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarClienteActionPerformed
-
+    private void botAdicionarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarCliente1ActionPerformed
         String nome = txtNome.getText();
         String numero = txtNumero.getText();
         String bairro = txtBairro.getText();
@@ -746,11 +786,18 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     int id = gerIG.getGerDominio().inserirCliente(nome, num, bairro, rua, tel);
                     JOptionPane.showMessageDialog(this, "Cliente " + id + " " + "( " + nome + " )" + " inserido com sucesso.", "Inserir Cliente", JOptionPane.INFORMATION_MESSAGE);
                     esconderCampos();
-                    botLimpar.setVisible(false);
+                    botAlterar.setVisible(true);
                     txtNome.setText(nome);
                     txtNome.setEditable(false);
-                    botAdicionarCliente.setVisible(false);
+                    botLimpar.setVisible(false);
                     cliSelecionado = gerIG.getGerDominio().getCliente(id);
+                } else {
+                    // ALTERAR
+                    long tel = Long.parseLong(telefone);
+                    gerIG.getGerDominio().alterarCliente(cliSelecionado, nome, num, bairro, rua, tel);
+                    int id = cliSelecionado.getIdCliente();
+                    JOptionPane.showMessageDialog(this, "Cliente " + id + " alterado com sucesso.", "Inserir Cliente", JOptionPane.INFORMATION_MESSAGE  );  
+                    limparPedido();
                 }
 
             } catch (HibernateException ex) {
@@ -758,19 +805,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_botAdicionarClienteActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        gerIG.carregarCombo(cmbPizzas, Pizza.class);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void chkMaioneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMaioneseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkMaioneseActionPerformed
-
-    private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroActionPerformed
+    }//GEN-LAST:event_botAdicionarCliente1ActionPerformed
 
     private void esconderCampos() {
         txtNumero.setVisible(false);
@@ -785,9 +820,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private void mostrarCampos() {
         txtNumero.setVisible(true);
-        botLimpar.setVisible(true);
+        botAlterar.setVisible(true);
         botPesquisar.setVisible(true);
-        botAdicionarCliente.setVisible(true);
+        botAlterar.setVisible(true);
         lblNumero.setVisible(true);
         txtBairro.setVisible(true);
         lblBairro.setVisible(true);
@@ -796,6 +831,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         txtTelefone.setVisible(true);
         lblTelefone.setVisible(true);
         txtNome.setEditable(true);
+        botLimpar.setVisible(true);
 
     }
 
@@ -881,7 +917,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bordaPadrao;
     private javax.swing.JButton botAdicionar;
-    private javax.swing.JButton botAdicionarCliente;
+    private javax.swing.JButton botAdicionarCliente1;
+    private javax.swing.JButton botAlterar;
     private javax.swing.JButton botEditarPizza;
     private javax.swing.JButton botEncerrar;
     private javax.swing.JButton botLimpar;

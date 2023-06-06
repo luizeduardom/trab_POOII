@@ -27,8 +27,6 @@ public class Interface_Grafica {
     protected Pizza obj;
     protected String observacao;
 
-    
-
     /**
      * @param args the command line arguments
      */
@@ -67,7 +65,6 @@ public class Interface_Grafica {
         return gerDominio;
     }
 
-
     public Interface_Grafica() {
         try {
             gerDominio = new GerenciadorDominio();
@@ -98,6 +95,7 @@ public class Interface_Grafica {
 
     }
 
+
     public Cliente janelaPesqCliente() {
         janPesqCliente = (JanelaPesqCliente) abrirJanela(janelaPrincipal, janPesqCliente, JanelaPesqCliente.class);
         return janPesqCliente.getCliente();
@@ -125,7 +123,7 @@ public class Interface_Grafica {
         }
 
     }
-    
+
     public String getObservacao() {
         return observacao;
     }
@@ -133,7 +131,6 @@ public class Interface_Grafica {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-    
 
     public Pizza getObj() {
         return obj;

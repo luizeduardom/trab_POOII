@@ -23,7 +23,7 @@ import org.hibernate.HibernateException;
 public class JanelaPesqCliente extends javax.swing.JDialog {
 
     private Interface_Grafica gerIG;
-    private Cliente cliSelecionado;
+    protected Cliente cliSelecionado;
 
     public JanelaPesqCliente(java.awt.Frame parent, boolean modal, Interface_Grafica gerIG) {
         super(parent, modal);
@@ -44,7 +44,6 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
 
         jPopupMenu2 = new javax.swing.JPopupMenu();
         menuPedidos = new javax.swing.JMenuItem();
-        menuAlterar = new javax.swing.JMenuItem();
         menuExcluir = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
@@ -64,14 +63,14 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         });
         jPopupMenu2.add(menuPedidos);
 
-        menuAlterar.setBackground(new java.awt.Color(102, 255, 255));
-        menuAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/conjunto-de-setas-de-sincronizacao.png"))); // NOI18N
-        menuAlterar.setText("Alterar Cliente");
-        jPopupMenu2.add(menuAlterar);
-
         menuExcluir.setBackground(new java.awt.Color(255, 51, 51));
         menuExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/excluir.png"))); // NOI18N
         menuExcluir.setText("Excluir Cliente");
+        menuExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuExcluirActionPerformed(evt);
+            }
+        });
         jPopupMenu2.add(menuExcluir);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -178,6 +177,7 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public Cliente getCliente() {
@@ -218,27 +218,26 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
 
     private void menuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosActionPerformed
         int linha = jTable1.getSelectedRow();
-        if ( linha >= 0 ) {
+        if (linha >= 0) {
             cliSelecionado = (Cliente) jTable1.getValueAt(linha, 0);
-            
+
             gerIG.getGerDominio().carregarPedidos(cliSelecionado);
-            
+
             List<Pedido> pedidos = cliSelecionado.getPedido();
-            for (Pedido ped : pedidos ) {
+            for (Pedido ped : pedidos) {
                 // Mostrar
-                JOptionPane.showMessageDialog(rootPane, "ID do Pedido: " + ped.getIdPedido() + " - " 
-                        + "Itens do Pedido: " + ped.getItenspedido()+ " - " 
-                         + "Valor Total: " + ped.getValorTotal());
+                JOptionPane.showMessageDialog(rootPane, "ID do Pedido: " + ped.getIdPedido() + " - "
+                        + "Itens do Pedido: " + ped.getItenspedido() + " - "
+                        + "Valor Total: " + ped.getValorTotal());
             }
-            
-        }
-        else {
-            JOptionPane.showMessageDialog(this,"Selecione uma linha.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE  );
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_menuPedidosActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-         try {
+        try {
             List<Cliente> lista = gerIG.getGerDominio().pesquisarCliente("");
 
             // APAGA as linhas da tabela
@@ -254,6 +253,26 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_formComponentShown
 
+    private void menuExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExcluirActionPerformed
+        int linha = jTable1.getSelectedRow();
+        if (linha >= 0) {
+
+            try {
+                Cliente cli = (Cliente) jTable1.getValueAt(linha, 0);
+                if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir esse cliente?", "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    gerIG.getGerDominio().excluirCliente(cli);
+                    ((DefaultTableModel) jTable1.getModel()).removeRow(linha);
+                    JOptionPane.showMessageDialog(this, cli.getNome() + " excluído com sucesso.", "Mensagem", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (HibernateException ex) {
+                JOptionPane.showMessageDialog(this, ex, "ERRO ao PESQUISAR Cliente", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_menuExcluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botPesquisar;
@@ -264,7 +283,6 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblNome;
-    private javax.swing.JMenuItem menuAlterar;
     private javax.swing.JMenuItem menuExcluir;
     private javax.swing.JMenuItem menuPedidos;
     private javax.swing.JTextField txtNome;

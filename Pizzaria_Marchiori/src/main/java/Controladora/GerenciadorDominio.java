@@ -47,9 +47,19 @@ public class GerenciadorDominio {
         return lista;
 
     }
+    
+    public void excluirCliente (Object obj) throws HibernateException {
+        genDao.excluir(obj);
+    }
 
     public void alterarCliente(Cliente cli, String nome, int numero, String bairro, String rua, long telefone) throws HibernateException {
-
+        cli.setNome(nome);
+        cli.setNumero(numero);
+        cli.setBairro(bairro);
+        cli.setRua(rua);
+        cli.setTelefone(telefone);
+                   
+        cliDao.alterar(cli);  
     }
 
     public Adicional getAdicional(int id) {

@@ -119,5 +119,47 @@ public class GenericDAO {
         return objReturn;
 
     }
+    
+    public void excluir(Object obj) throws HibernateException {
+        Session sessao = null;
+        
+        try {
+            sessao = ConexaoHibernate.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            //OPERAÇÕES
+            sessao.delete(obj);
+
+            sessao.getTransaction().commit();              
+            sessao.close();
+        } catch( HibernateException erro) {
+            if ( sessao != null ){
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            throw new HibernateException(erro);
+        }
+    }
+    
+     public void alterar(Object obj) throws HibernateException {
+        Session sessao = null;
+        
+        try {
+            sessao = ConexaoHibernate.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            //OPERAÇÕES
+            sessao.update(obj);
+
+            sessao.getTransaction().commit();              
+            sessao.close();
+        } catch( HibernateException erro) {
+            if ( sessao != null ){
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            throw new HibernateException(erro);
+        }
+    }
 
 }
