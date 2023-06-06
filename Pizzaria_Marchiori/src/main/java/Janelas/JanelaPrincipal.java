@@ -539,11 +539,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
 
     private void radioCheddarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCheddarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_radioCheddarActionPerformed
 
     private void botPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPesquisarActionPerformed
         cliSelecionado = gerIG.janelaPesqCliente();
+        
+        // Se selecionar um cliente, seta o nome dele como principal
         if (cliSelecionado != null) {
             txtNome.setText(cliSelecionado.getNome());
             esconderCampos();
@@ -807,6 +809,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botAdicionarCliente1ActionPerformed
 
+    // Funcao para esconder os campos do cliente
     private void esconderCampos() {
         txtNumero.setVisible(false);
         lblNumero.setVisible(false);
@@ -818,6 +821,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         lblTelefone.setVisible(false);
     }
 
+    // Funcao para mostrar os campos do cliente
     private void mostrarCampos() {
         txtNumero.setVisible(true);
         botAlterar.setVisible(true);
@@ -835,6 +839,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     }
 
+    // Funcao para validar os campos antes de adicionar um cliente
     private boolean validarCampos() {
 
         String msgErro = "";
@@ -883,6 +888,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    // Funcao para limpar o pedido
     private void limparPedido() {
 
         cliSelecionado = null;

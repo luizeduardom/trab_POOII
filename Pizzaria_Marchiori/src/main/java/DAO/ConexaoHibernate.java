@@ -23,7 +23,7 @@ public class ConexaoHibernate {
             sessionFactory = new Configuration().configure().buildSessionFactory();
         } catch (HibernateException ex) {
             // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
+            System.err.println("Criação da sessão falhou." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

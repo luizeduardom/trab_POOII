@@ -112,6 +112,7 @@ public class Interface_Grafica {
         System.exit(0);
     }
 
+    // Carrega o combobox de pizzas
     public void carregarCombo(JComboBox combo, Class classe) {
         try {
             List<Pizza> lista = gerDominio.listar(classe);

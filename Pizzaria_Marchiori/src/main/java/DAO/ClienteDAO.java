@@ -18,6 +18,7 @@ import org.hibernate.Session;
  */
 public class ClienteDAO extends GenericDAO {
 
+    // Pesquisa um cliente por nome
     public List<Cliente> pesquisarNome(String pesq) throws HibernateException {
         return pesquisar(Cliente.class, pesq);
     }

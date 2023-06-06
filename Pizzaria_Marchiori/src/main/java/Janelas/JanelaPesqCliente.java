@@ -196,7 +196,7 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
             ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
 
             for (Cliente cli : lista) {
-                // ADICIONAR LINHA NA TABELA        
+                // ADICIONA LINHAS NA TABELA        
                 ((DefaultTableModel) jTable1.getModel()).addRow(cli.toArray());
             }
 
@@ -206,6 +206,7 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_botPesquisarActionPerformed
 
     private void botSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botSelecionarActionPerformed
+        // Pega a linha selecionada
         int linha = jTable1.getSelectedRow();
         if (linha >= 0) {
             cliSelecionado = (Cliente) jTable1.getValueAt(linha, 0);
@@ -238,6 +239,8 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         try {
+            
+            // Lista todos os clientes na tabela
             List<Cliente> lista = gerIG.getGerDominio().pesquisarCliente("");
 
             // APAGA as linhas da tabela

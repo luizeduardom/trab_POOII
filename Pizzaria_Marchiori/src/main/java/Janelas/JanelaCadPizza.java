@@ -158,7 +158,6 @@ public class JanelaCadPizza extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botConfirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botConfirmar1ActionPerformed
-
         String observacao = txtObs.getText();
         gerIG.setObservacao(observacao);
         gerIG.janelaCadPizzaFechar(this);
@@ -173,18 +172,27 @@ public class JanelaCadPizza extends javax.swing.JDialog {
     }//GEN-LAST:event_jPanel2ComponentShown
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // Setando o nome da pizza como padrão na textfield
         txtNomePizza.setText(gerIG.getObj().getNomePizza());
+        
+        // Pegando o objeto pizza para fazer as consultas
         Pizza obj = gerIG.getObj();
-        txtNomePizza.setText(obj.getNomePizza());
+        
         int i = 0;
+        
+        // Criando o modelo para setar na lista
         DefaultListModel model = new DefaultListModel();
 
+        // Setando os ingredientes na lista para o cliente visualizar
         for (i = 0; i < obj.getIngrediente().size(); i++) {
             model.addElement(obj.getIngrediente().get(i));
 
         }
 
+        // Setando o modelo na lista
         jList1.setModel(model);
+        
+        // Desativando a lista para o cliente só poder visualizar os ingredientes
         jList1.setEnabled(false);
     }//GEN-LAST:event_formComponentShown
 
