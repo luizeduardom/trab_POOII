@@ -77,9 +77,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         radioCheddar = new javax.swing.JRadioButton();
         radioCatupiry = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
-        botEditarPizza = new javax.swing.JButton();
+        botAdicionarObservacaoPizza = new javax.swing.JButton();
         cmbPizzas = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        botAdicionarPizza = new javax.swing.JButton();
+        botEditarPizzaExistente = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         chkCebola = new javax.swing.JCheckBox();
         chkMussarela = new javax.swing.JCheckBox();
@@ -244,7 +246,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioGrande)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -274,11 +276,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Pizzas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        botEditarPizza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/selecione.png"))); // NOI18N
-        botEditarPizza.setText("Adicionar Observacao");
-        botEditarPizza.addActionListener(new java.awt.event.ActionListener() {
+        botAdicionarObservacaoPizza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/selecione.png"))); // NOI18N
+        botAdicionarObservacaoPizza.setText("Adicionar Observacao");
+        botAdicionarObservacaoPizza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botEditarPizzaActionPerformed(evt);
+                botAdicionarObservacaoPizzaActionPerformed(evt);
             }
         });
 
@@ -290,31 +292,55 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botAdicionarPizza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/add_pizza.png"))); // NOI18N
+        botAdicionarPizza.setText("Adicionar Pizza");
+        botAdicionarPizza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botAdicionarPizzaActionPerformed(evt);
+            }
+        });
+
+        botEditarPizzaExistente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/intergraf/imagens/add_pizza.png"))); // NOI18N
+        botEditarPizzaExistente.setText("Editar Pizza Existente");
+        botEditarPizzaExistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botEditarPizzaExistenteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(236, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botEditarPizza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cmbPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botEditarPizzaExistente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botAdicionarPizza, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botAdicionarObservacaoPizza)))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botEditarPizza)
-                .addGap(7, 7, 7)
-                .addComponent(cmbPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(22, 22, 22))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botAdicionarPizza)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botAdicionarObservacaoPizza))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(botEditarPizzaExistente))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -509,7 +535,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(botAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
@@ -544,7 +570,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private void botPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPesquisarActionPerformed
         cliSelecionado = gerIG.janelaPesqCliente();
-        
+
         // Se selecionar um cliente, seta o nome dele como principal
         if (cliSelecionado != null) {
             txtNome.setText(cliSelecionado.getNome());
@@ -558,11 +584,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botPesquisarActionPerformed
 
-    private void botEditarPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEditarPizzaActionPerformed
+    private void botAdicionarObservacaoPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarObservacaoPizzaActionPerformed
         Pizza obj = (Pizza) (cmbPizzas.getSelectedItem());
         gerIG.setObj(obj);
-        gerIG.janelaCadPizza();
-    }//GEN-LAST:event_botEditarPizzaActionPerformed
+        gerIG.janelaEditarPizza();
+    }//GEN-LAST:event_botAdicionarObservacaoPizzaActionPerformed
 
     private void botAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarActionPerformed
 
@@ -745,7 +771,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             txtNumero.setText(numero_convertido);
             String telefone_convertido = String.valueOf(cliSelecionado.getTelefone());
             txtTelefone.setText(telefone_convertido);
-        }      
+        }
     }//GEN-LAST:event_botAlterarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -800,7 +826,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     long tel = Long.parseLong(telefone);
                     gerIG.getGerDominio().alterarCliente(cliSelecionado, nome, num, bairro, rua, tel);
                     int id = cliSelecionado.getIdCliente();
-                    JOptionPane.showMessageDialog(this, "Cliente " + id + " alterado com sucesso.", "Inserir Cliente", JOptionPane.INFORMATION_MESSAGE  );  
+                    JOptionPane.showMessageDialog(this, "Cliente " + id + " alterado com sucesso.", "Inserir Cliente", JOptionPane.INFORMATION_MESSAGE);
                     limparPedido();
                 }
 
@@ -810,6 +836,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_botAdicionarCliente1ActionPerformed
+
+    private void botAdicionarPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAdicionarPizzaActionPerformed
+        gerIG.setObj(null);
+        gerIG.JanelaCadPizza();
+    }//GEN-LAST:event_botAdicionarPizzaActionPerformed
+
+    private void botEditarPizzaExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botEditarPizzaExistenteActionPerformed
+        Pizza obj = (Pizza) (cmbPizzas.getSelectedItem());
+        gerIG.setObj(obj);
+        gerIG.JanelaCadPizza();
+    }//GEN-LAST:event_botEditarPizzaExistenteActionPerformed
 
     // Funcao para esconder os campos do cliente
     private void esconderCampos() {
@@ -926,8 +963,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton bordaPadrao;
     private javax.swing.JButton botAdicionar;
     private javax.swing.JButton botAdicionarCliente1;
+    private javax.swing.JButton botAdicionarObservacaoPizza;
+    private javax.swing.JButton botAdicionarPizza;
     private javax.swing.JButton botAlterar;
-    private javax.swing.JButton botEditarPizza;
+    private javax.swing.JButton botEditarPizzaExistente;
     private javax.swing.JButton botEncerrar;
     private javax.swing.JButton botLimpar;
     private javax.swing.JButton botPesquisar;

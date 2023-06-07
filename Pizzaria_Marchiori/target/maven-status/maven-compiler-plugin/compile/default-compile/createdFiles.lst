@@ -1,12 +1,14 @@
-Janelas\JanelaCadPizza$5.class
 Janelas\JanelaPrincipal$9.class
 Janelas\JanelaPrincipal$2.class
 Janelas\JanelaPesqCliente$3.class
 Janelas\JanelaPrincipal$11.class
+Janelas\JanelaEditarPizza$4.class
+Janelas\JanelaEditarPizza$1.class
 Janelas\JanelaCadPizza$2.class
 Janelas\JanelaPesqCliente$6.class
 Janelas\JanelaCadPizza.class
 Janelas\JanelaPrincipal$5.class
+Janelas\JanelaEditarPizza$5.class
 DAO\ConexaoHibernate.class
 Janelas\JanelaPesqCliente$2.class
 Dominio\Adicional.class
@@ -14,6 +16,7 @@ Controladora\Interface_Grafica.class
 Janelas\JanelaPrincipal$8.class
 Janelas\JanelaCadPizza$4.class
 Dominio\Cliente.class
+Janelas\JanelaPrincipal$15.class
 Controladora\GerenciadorDominio.class
 Dominio\Pizza.class
 Janelas\JanelaPesqCliente$5.class
@@ -27,6 +30,7 @@ Janelas\JanelaPesqCliente$1.class
 Janelas\JanelaPrincipal$4.class
 Janelas\JanelaCadPizza$3.class
 Janelas\JanelaPrincipal$7.class
+Janelas\JanelaEditarPizza$2.class
 Janelas\JanelaPrincipal$3.class
 DAO\GenericDAO.class
 Janelas\JanelaPesqCliente$7.class
@@ -36,5 +40,7 @@ Dominio\ItensPedido.class
 Janelas\JanelaPrincipal$10.class
 Janelas\JanelaPrincipal$6.class
 Janelas\JanelaPesqCliente.class
+Janelas\JanelaEditarPizza$3.class
+Janelas\JanelaEditarPizza.class
 Dominio\Ingrediente.class
 Dominio\Pedido.class

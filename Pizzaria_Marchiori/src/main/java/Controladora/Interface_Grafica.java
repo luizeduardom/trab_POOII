@@ -3,6 +3,7 @@ package Controladora;
 import Dominio.Cliente;
 import Dominio.Pizza;
 import Janelas.JanelaCadPizza;
+import Janelas.JanelaEditarPizza;
 import Janelas.JanelaPesqCliente;
 import Janelas.JanelaPrincipal;
 import java.awt.Frame;
@@ -11,6 +12,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
@@ -21,9 +23,10 @@ import org.hibernate.HibernateException;
 public class Interface_Grafica {
 
     private JanelaPrincipal janelaPrincipal = null;
-    private JanelaCadPizza janPizza = null;
+    private JanelaEditarPizza janPizza = null;
     private GerenciadorDominio gerDominio = null;
     private JanelaPesqCliente janPesqCliente = null;
+    private JanelaCadPizza janCadPizza = null;
     protected Pizza obj;
     protected String observacao;
 
@@ -90,11 +93,14 @@ public class Interface_Grafica {
         return dlg;
     }
 
-    public void janelaCadPizza() {
-        janPizza = (JanelaCadPizza) abrirJanela(janelaPrincipal, janPizza, JanelaCadPizza.class);
+    public void janelaEditarPizza() {
+        janPizza = (JanelaEditarPizza) abrirJanela(janelaPrincipal, janPizza, JanelaEditarPizza.class);
 
     }
 
+    public void JanelaCadPizza() {
+        janCadPizza = (JanelaCadPizza) abrirJanela(janelaPrincipal, janCadPizza, JanelaCadPizza.class);
+    }
 
     public Cliente janelaPesqCliente() {
         janPesqCliente = (JanelaPesqCliente) abrirJanela(janelaPrincipal, janPesqCliente, JanelaPesqCliente.class);
@@ -104,6 +110,7 @@ public class Interface_Grafica {
 
     public void janelaCadPizzaFechar(JDialog janela) {
         janela.setVisible(false);
+        janela = null;
 
     }
 
@@ -125,6 +132,19 @@ public class Interface_Grafica {
 
     }
 
+    public void carregarListBox(JList combo, Class classe) {
+
+        try {
+            List lista = gerDominio.listar(classe);
+            combo.removeAll();
+            combo.setListData(lista.toArray());
+
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(janelaPrincipal, "Erro ao carregar Ingredientes. " + ex.getMessage());
+        }
+
+    }
+
     public String getObservacao() {
         return observacao;
     }
@@ -140,4 +160,5 @@ public class Interface_Grafica {
     public void setObj(Pizza obj) {
         this.obj = obj;
     }
+
 }

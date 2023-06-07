@@ -5,6 +5,7 @@ import DAO.ConexaoHibernate;
 import DAO.GenericDAO;
 import Dominio.Adicional;
 import Dominio.Cliente;
+import Dominio.Ingrediente;
 import Dominio.ItensPedido;
 import Dominio.Pedido;
 import Dominio.Pizza;
@@ -65,6 +66,13 @@ public class GerenciadorDominio {
         cliDao.alterar(cli);
     }
 
+    public void alterarPizza(Pizza pizza, String nomePizza, float valorPizza, List<Ingrediente> ingredientes) throws HibernateException {
+        pizza.setNomePizza(nomePizza);
+        pizza.setIngrediente(ingredientes);
+        pizza.setValorPizza(valorPizza);
+
+        cliDao.alterar(pizza);
+    }
     // Funcao para carregar um adicional do banco de dados
     public Adicional getAdicional(int id) {
 
@@ -112,6 +120,11 @@ public class GerenciadorDominio {
             return -1;
         }
 
+    }
+    
+     public void inserirPizza (List<Ingrediente> ingredientes, String nomePizza, float valorPizza) throws HibernateException {
+        Pizza pizza = new Pizza(ingredientes, nomePizza, valorPizza);
+        genDao.inserir(pizza);
     }
     
     // Carrega os pedidos do cliente

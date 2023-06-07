@@ -54,6 +54,14 @@ public class Pizza implements Serializable {
         this.ingrediente = new ArrayList();
     }
 
+    public Pizza(List<Ingrediente> ingrediente, String nomePizza, float valorPizza) {
+        this.ingrediente = ingrediente;
+        this.nomePizza = nomePizza;
+        this.valorPizza = valorPizza;
+    }
+    
+    
+
     /*|-------------------| construtor |-------------------|*/
 
  /*|-------------------| getters & setters |-------------------|*/
