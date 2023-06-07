@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-import org.hibernate.HibernateException;
 
 /**
  *
@@ -36,7 +35,7 @@ public class Cliente implements Serializable {
 
     /*|-------------------| relacionamentos |-------------------|*/
     
-    @OneToMany (mappedBy = "cliente", fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "cliente", fetch = FetchType.EAGER)
     private List<Pedido> pedido = new ArrayList<>();
     
     /*|-------------------| relacionamentos |-------------------|*/

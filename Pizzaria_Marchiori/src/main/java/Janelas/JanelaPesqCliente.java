@@ -219,19 +219,28 @@ public class JanelaPesqCliente extends javax.swing.JDialog {
 
     private void menuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosActionPerformed
         int linha = jTable1.getSelectedRow();
+        int validacao = 0;
         if (linha >= 0) {
             cliSelecionado = (Cliente) jTable1.getValueAt(linha, 0);
 
             gerIG.getGerDominio().carregarPedidos(cliSelecionado);
+            
+            System.out.println("passei aqui");
 
             List<Pedido> pedidos = cliSelecionado.getPedido();
+            
+            
             for (Pedido ped : pedidos) {
                 // Mostrar
-                JOptionPane.showMessageDialog(rootPane, "ID do Pedido: " + ped.getIdPedido() + " - "
-                        + "Itens do Pedido: " + ped.getItenspedido() + " - "
-                        + "Valor Total: " + ped.getValorTotal());
+                validacao = 1;
+                JOptionPane.showMessageDialog(rootPane, "ID do Pedido: " + ped.getIdPedido() + " -- "
+                        + "Itens do Pedido: " + ped.getItenspedido());
             }
-
+            
+            if (validacao == 0) {
+                JOptionPane.showMessageDialog(rootPane, "O cliente não possui nenhum pedido ");
+            }
+            
         } else {
             JOptionPane.showMessageDialog(this, "Selecione uma linha.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
         }

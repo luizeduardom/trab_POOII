@@ -206,13 +206,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         radioGrande.setText("Grande");
 
         jTextField5.setEditable(false);
-        jTextField5.setText("30,00");
+        jTextField5.setText("+5,00");
 
         jTextField6.setEditable(false);
-        jTextField6.setText("42,00");
+        jTextField6.setText("+15,00");
 
         jTextField7.setEditable(false);
-        jTextField7.setText("53,00");
+        jTextField7.setText("+20,00");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -554,6 +554,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             botLimpar.setVisible(false);
             botAlterar.setVisible(false);
             botAlterar.setVisible(true);
+            botAdicionarCliente1.setVisible(false);
         }
     }//GEN-LAST:event_botPesquisarActionPerformed
 
@@ -568,12 +569,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         List<Adicional> adicional = new ArrayList();
         tamanho = (char) grupoTamanho.getSelection().getMnemonic();
         if (radioPequena.isSelected()) {
-            subtotal += 30;
+            subtotal += 5;
         } else if (radioMedia.isSelected()) {
-            subtotal += 42;
+            subtotal += 15;
 
         } else if (radioGrande.isSelected()) {
-            subtotal += 53;
+            subtotal += 20;
         }
 
         if (chkMaionese.isSelected()) {
@@ -793,6 +794,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     txtNome.setEditable(false);
                     botLimpar.setVisible(false);
                     cliSelecionado = gerIG.getGerDominio().getCliente(id);
+                    botAdicionarCliente1.setVisible(false);
                 } else {
                     // ALTERAR
                     long tel = Long.parseLong(telefone);

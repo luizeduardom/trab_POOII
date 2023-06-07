@@ -19,7 +19,7 @@ public class Pedido implements Serializable {
     private int idPedido;
 
     /*|-------------------| relacionamentos |-------------------|*/
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
@@ -102,7 +102,17 @@ public class Pedido implements Serializable {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
+
+    @Override
+    public String toString() {
+        return ": " + "entrega = " + entrega + " || valorTotal = " + valorTotal + " || observacao = " + observacao + '}';
+    }
+
+    
+    
+    
 }
+
 
 
 /*|-------------------| getters & setters |-------------------|*/

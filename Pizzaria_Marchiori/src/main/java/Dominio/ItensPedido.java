@@ -95,7 +95,7 @@ public class ItensPedido implements Serializable {
 
     @Override
     public String toString() {
-        return "ItensPedido {" + "idItemPedido=" + idItensPedido + ", Pedido=" + pedido + ", Pizza=" + pizza + ", Tamanho=" + tamanho + ", Adicionais=" + adicional + '}';
+        return " idItemPedido= " + idItensPedido + " || " + pedido + " || Pizza = " + pizza + " || Tamanho = " + tamanho;
     }
 
     
